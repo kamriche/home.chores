@@ -1,0 +1,2072 @@
+<!doctype html>
+<html lang="en" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Home Chores</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe id="codex-visualization" sandbox="allow-scripts" referrerpolicy="no-referrer" title="Home Chores" data-srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot; data-visualize-standalone&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Home Chores&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --icon-size: 16px;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --corner-shape: round;
+  --radius: var(--border-radius-lg, 10px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: var(--visualize-paint-gutter, 0px);
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: var(--corner-shape);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin-block: 6px;
+  border: 0;
+  background: var(--border);
+}
+
+.nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress {
+  display: flex;
+  height: 8px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 8px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar:only-child {
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.nav-link,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn,
+.nav-link {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover,
+.nav-link:not(:disabled):not([aria-disabled=&quot;true&quot;]):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.nav-pills .nav-link {
+  min-width: 0;
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.nav-justified .nav-link {
+  flex: 1 1 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.nav-pills .nav-link.active {
+  color: var(--foreground);
+  background: var(--muted);
+}
+
+.btn:disabled,
+.nav-link:disabled,
+.nav-link[aria-disabled=&quot;true&quot;] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: var(--corner-shape);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed=&quot;true&quot;],
+  [aria-selected=&quot;true&quot;],
+  .is-selected
+) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .btn,
+  .nav-link,
+  .form-control,
+  .form-select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Keep small-screen WebKit from zooming when a text field receives focus. */
+  .form-control,
+  .form-select {
+    font-size: max(16px, var(--font-size-normal));
+  }
+
+  .form-control[type=&quot;file&quot;]::file-selector-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control-color[type=&quot;color&quot;] {
+    width: 44px;
+    height: 44px;
+  }
+
+  .form-control:is(
+    [type=&quot;date&quot;],
+    [type=&quot;datetime-local&quot;],
+    [type=&quot;month&quot;],
+    [type=&quot;time&quot;],
+    [type=&quot;week&quot;]
+  ) {
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 8px;
+  }
+
+  .form-check {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+  }
+
+  .form-check-input::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    content: &quot;&quot;;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-check-label {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .form-range {
+    height: 44px;
+    touch-action: pan-y;
+  }
+
+  .form-range::-webkit-slider-runnable-track {
+    height: 44px;
+  }
+
+  .form-range::-moz-range-track {
+    height: 44px;
+  }
+
+  .form-range::-webkit-slider-thumb {
+    margin-top: 12px;
+  }
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script type=&quot;application/json&quot; id=&quot;codex-visualization-widget-state&quot;&gt;__CODEX_VISUALIZATION_WIDGET_STATE__&lt;/script&gt;
+&lt;script&gt;(() =&gt; {
+  const root = document.documentElement;
+  const mediaQuery = globalThis.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
+  const apply = Reflect.apply;
+  const isArray = Array.isArray;
+  const hasOwn = Object.hasOwn;
+  const parentWindow = globalThis.parent;
+  const stringify = JSON.stringify;
+  const parse = JSON.parse;
+  const encode = TextEncoder.prototype.encode.bind(new TextEncoder());
+  const initialStateElement = document.getElementById(
+    &quot;codex-visualization-widget-state&quot;,
+  );
+  const initialGlobals = parse(initialStateElement?.textContent ?? &quot;{}&quot;);
+  initialStateElement?.remove();
+  /** @type {Record&lt;string, unknown&gt; | null} */
+  let state = initialGlobals.widgetState ?? null;
+  const statePersistence = initialGlobals.statePersistence ?? &quot;none&quot;;
+  let nextStateRequestId = 0;
+  /** @type {Map&lt;number, { resolve: () =&gt; void; reject: (error: Error) =&gt; void; timeout: ReturnType&lt;typeof globalThis.setTimeout&gt;; serializedState: string }&gt;} */
+  const pendingStateWrites = new Map();
+  const persistenceError = () =&gt;
+    Object.assign(
+      new Error(&quot;The host could not persist the widget state update&quot;),
+      {
+        code: -32000,
+        data: { code: &quot;widget_state_persistence_failed&quot;, retryable: false },
+      },
+    );
+  /**
+   * @param {object} prototype
+   * @param {string} property
+   */
+  const getPrototypeGetter = (prototype, property) =&gt; {
+    // oxlint-disable-next-line typescript/unbound-method -- invoked through captured Reflect.apply
+    const getter = Object.getOwnPropertyDescriptor(prototype, property)?.get;
+    if (getter == null) {
+      throw new Error(`Missing ${property} getter`);
+    }
+    return getter;
+  };
+  const getMessageData = getPrototypeGetter(MessageEvent.prototype, &quot;data&quot;);
+  const getMessagePorts = getPrototypeGetter(MessageEvent.prototype, &quot;ports&quot;);
+  const getMessageSource = getPrototypeGetter(MessageEvent.prototype, &quot;source&quot;);
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const addHostMessageListener = MessagePort.prototype.addEventListener;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const postHostMessage = MessagePort.prototype.postMessage;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const startHostPort = MessagePort.prototype.start;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const stopMessagePropagation = Event.prototype.stopImmediatePropagation;
+  /** @type {MessagePort | null} */
+  let hostPort = null;
+  const postToHost = (type, payload) =&gt; {
+    if (hostPort != null) {
+      apply(postHostMessage, hostPort, [{ type, ...payload }]);
+    }
+  };
+  const openExternal = ({ href }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;open-external&quot;, { href });
+    }
+  };
+  const sendFollowUpMessage = ({ context, prompt, title }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;follow-up&quot;, { context, prompt, title });
+    }
+    return Promise.resolve();
+  };
+  /**
+   * @param {Record&lt;string, unknown&gt; | ((previous: Record&lt;string, unknown&gt; | null) =&gt; Record&lt;string, unknown&gt;)} next
+   * @returns {Promise&lt;void&gt;}
+   */
+  const setWidgetState = async (next) =&gt; {
+    const nextState = typeof next === &quot;function&quot; ? next(state) : next;
+    if (
+      nextState == null ||
+      typeof nextState !== &quot;object&quot; ||
+      isArray(nextState)
+    ) {
+      throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+    }
+    const inputState = stringify(
+      nextState,
+      (_key, /** @type {unknown} */ value) =&gt; {
+        if (
+          typeof value === &quot;undefined&quot; ||
+          typeof value === &quot;function&quot; ||
+          typeof value === &quot;symbol&quot; ||
+          (typeof value === &quot;number&quot; &amp;&amp; !Number.isFinite(value))
+        ) {
+          throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+        }
+        return value;
+      },
+    );
+    const parsedState = parse(inputState);
+    if (
+      parsedState == null ||
+      typeof parsedState !== &quot;object&quot; ||
+      isArray(parsedState)
+    ) {
+      throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+    }
+    const storedState = {
+      modelContent: null,
+      privateContent: null,
+      ...parsedState,
+    };
+    const serializedState = stringify(storedState);
+    if (encode(serializedState).length &gt; 16 * 1024) {
+      throw new TypeError(
+        &quot;Widget state must be a JSON object of at most 16 KiB&quot;,
+      );
+    }
+    if (
+      hasOwn(storedState, &quot;imageIds&quot;) &amp;&amp;
+      (!isArray(storedState.imageIds) ||
+        storedState.imageIds.some(
+          (/** @type {unknown} */ id) =&gt; typeof id !== &quot;string&quot;,
+        ))
+    ) {
+      throw new TypeError(&quot;Widget state imageIds must be an array of strings&quot;);
+    }
+    if (storedState.imageIds?.length &gt; 0) {
+      throw Object.assign(
+        new TypeError(&quot;Visualization state does not support image attachments&quot;),
+        { code: -32602, data: { code: &quot;images_unsupported&quot; } },
+      );
+    }
+    state = storedState;
+    globalThis.openai.widgetState = state;
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: { widgetState: state } },
+      }),
+    );
+    if (statePersistence === &quot;none&quot;) {
+      throw persistenceError();
+    }
+    const id = ++nextStateRequestId;
+    return new Promise((resolve, reject) =&gt; {
+      const timeout = globalThis.setTimeout(() =&gt; {
+        pendingStateWrites.delete(id);
+        reject(persistenceError());
+      }, 30_000);
+      pendingStateWrites.set(id, { resolve, reject, timeout, serializedState });
+      postToHost(&quot;widget-state-write&quot;, { id, state: serializedState });
+    });
+  };
+  const syncTheme = () =&gt; {
+    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
+    root.dataset.theme = theme;
+    globalThis.openai = {
+      ...globalThis.openai,
+      openExternal,
+      sendFollowUpMessage,
+      setWidgetState,
+      theme,
+      visualizationStyleVariables: {},
+      visualizationTheme: theme,
+      widgetState: state,
+      statePersistence,
+      stateModelContext: &quot;none&quot;,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: globalThis.openai },
+      }),
+    );
+  };
+  const sendHeight = () =&gt; {
+    postToHost(&quot;height&quot;, {
+      height: Math.ceil(
+        Math.max(
+          document.body.scrollHeight,
+          document.body.getBoundingClientRect().height,
+        ),
+      ),
+    });
+  };
+
+  globalThis.addEventListener(
+    &quot;message&quot;,
+    (event) =&gt; {
+      const data = apply(getMessageData, event, []);
+      const ports = apply(getMessagePorts, event, []);
+      const source = apply(getMessageSource, event, []);
+      if (
+        hostPort != null ||
+        source !== parentWindow ||
+        typeof data !== &quot;object&quot; ||
+        data?.type !== &quot;codex-visualization-initialize&quot; ||
+        !isArray(ports) ||
+        ports.length !== 1
+      ) {
+        return;
+      }
+      apply(stopMessagePropagation, event, []);
+      const nextHostPort = ports[0];
+      try {
+        apply(addHostMessageListener, nextHostPort, [
+          &quot;message&quot;,
+          (event) =&gt; {
+            const data = apply(getMessageData, event, []);
+            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
+              sendHeight();
+            } else if (
+              typeof data === &quot;object&quot; &amp;&amp;
+              data?.type === &quot;widget-state-result&quot;
+            ) {
+              /** @type {unknown} */
+              const id = data.id;
+              if (typeof id !== &quot;number&quot;) {
+                return;
+              }
+              const pending = pendingStateWrites.get(id);
+              if (pending != null) {
+                pendingStateWrites.delete(id);
+                globalThis.clearTimeout(pending.timeout);
+                if (data.ok === true) {
+                  pending.resolve();
+                } else {
+                  pending.reject(persistenceError());
+                }
+              }
+            }
+          },
+        ]);
+        apply(startHostPort, nextHostPort, []);
+      } catch {
+        return;
+      }
+      hostPort = nextHostPort;
+      for (const [id, { serializedState }] of pendingStateWrites) {
+        postToHost(&quot;widget-state-write&quot;, { id, state: serializedState });
+      }
+      sendHeight();
+    },
+    { capture: true },
+  );
+  document.currentScript?.remove();
+  mediaQuery.addEventListener(&quot;change&quot;, syncTheme);
+  globalThis.addEventListener(&quot;click&quot;, (event) =&gt; {
+    if (event.defaultPrevented) {
+      return;
+    }
+    let element = null;
+    if (event.target instanceof globalThis.Element) {
+      element = event.target;
+    } else if (event.target instanceof globalThis.Node) {
+      element = event.target.parentElement;
+    }
+    const link = element?.closest(&quot;a[href]&quot;);
+    const href = link?.getAttribute(&quot;href&quot;);
+    if (href == null) {
+      return;
+    }
+    if (href.startsWith(&quot;#&quot;)) {
+      let id;
+      try {
+        id = decodeURIComponent(href.slice(1));
+      } catch {
+        return;
+      }
+      const target = id.length === 0 ? root : document.getElementById(id);
+      if (
+        target == null ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      event.preventDefault();
+      postToHost(&quot;scroll-to&quot;, {
+        top: target.getBoundingClientRect().top + globalThis.scrollY,
+      });
+      return;
+    }
+    event.preventDefault();
+    openExternal({ href });
+  });
+  new ResizeObserver(sendHeight).observe(document.body);
+  syncTheme();
+})();
+&lt;/script&gt;
+&lt;div id=&quot;hearth-demo&quot; data-theme=&quot;light&quot; aria-label=&quot;Home chores app demo&quot;&gt;
+&lt;style&gt;
+#hearth-demo[data-theme]{--hc-bg:light-dark(#f3eadb,#211e19);--hc-panel:light-dark(#fff9ef,#2c2720);--hc-text:light-dark(#3c2d1d,#f8efdf);--hc-muted:light-dark(#78634c,#c1ad92);--hc-line:light-dark(#deceb6,#514434);--hc-accent:light-dark(#a45c0c,#efb454);--hc-on:light-dark(#fffaf1,#30200b);--hc-soft:light-dark(#f4dfb8,#42321e);--hc-warm:light-dark(#f7e4c3,#514025)}#hearth-demo[data-theme=light]{color-scheme:light}#hearth-demo[data-theme=dark]{color-scheme:dark}#hearth-demo .hc-top{flex-wrap:wrap}#hearth-demo .hc-top-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}#hearth-demo .hc-theme{display:flex;align-items:center;gap:7px;font-size:12px}#hearth-demo .hc-theme select{width:auto;background:var(--hc-panel);padding:6px 9px;font-size:12px;color:var(--hc-text);border:1px solid var(--hc-line);border-radius:8px}
+#hearth-demo{--hc-bg:light-dark(#f5f5ef,#20251f);--hc-panel:light-dark(#ffffff,#293029);--hc-text:light-dark(#25392d,#edf3e9);--hc-muted:light-dark(#647166,#b2bdb0);--hc-line:light-dark(#e2e7dd,#434b40);--hc-accent:light-dark(#315d43,#a9d2a8);--hc-on:light-dark(#ffffff,#203a27);--hc-soft:light-dark(#eaf0e4,#374733);--hc-warm:light-dark(#f3e9d5,#493f2d);color:var(--hc-text);background:var(--hc-bg);font-family:Inter,system-ui,sans-serif;border-radius:20px;overflow:hidden;font-size:14px;line-height:1.5}
+#hearth-demo *{box-sizing:border-box}#hearth-demo button,#hearth-demo input,#hearth-demo select{font:inherit}#hearth-demo button{cursor:pointer}#hearth-demo button:disabled{cursor:default;opacity:.5}#hearth-demo .hc-shell{display:grid;grid-template-columns:190px minmax(0,1fr);min-height:690px}#hearth-demo .hc-side{padding:28px 18px;background:var(--hc-panel);border-right:1px solid var(--hc-line);display:flex;flex-direction:column;gap:26px}#hearth-demo .hc-brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:500;letter-spacing:-1px}#hearth-demo .hc-logo{background:var(--hc-accent);color:var(--hc-on);padding:9px;border-radius:12px;display:flex}#hearth-demo .hc-label{color:var(--hc-muted);font-size:12px}#hearth-demo .hc-house{padding:13px;background:var(--hc-bg);border-radius:12px}#hearth-demo nav{display:grid;gap:7px}#hearth-demo .hc-nav{background:transparent;border:0;color:var(--hc-muted);padding:12px;border-radius:10px;text-align:left;display:flex;gap:11px;align-items:center}#hearth-demo .hc-nav[aria-current=page]{background:var(--hc-soft);color:var(--hc-accent)}#hearth-demo .hc-side-bottom{margin-top:auto;padding-top:20px;border-top:1px solid var(--hc-line)}#hearth-demo .hc-main{padding:28px 30px;min-width:0}#hearth-demo .hc-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--hc-muted);font-size:12px;margin-bottom:28px}#hearth-demo .hc-profile{display:flex;align-items:center;gap:8px}#hearth-demo .hc-avatar{width:32px;height:32px;border-radius:50%;background:var(--hc-soft);color:var(--hc-accent);display:inline-flex;justify-content:center;align-items:center;flex-shrink:0;font-weight:500}#hearth-demo h1{font-size:30px;line-height:1.2;font-weight:500;letter-spacing:-1px;margin:0 0 8px}#hearth-demo h2{font-size:17px;font-weight:500;margin:0}#hearth-demo p{margin:0;color:var(--hc-muted)}#hearth-demo .hc-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:24px}#hearth-demo .hc-button{border:1px solid var(--hc-line);background:var(--hc-panel);color:var(--hc-text);border-radius:9px;padding:9px 14px;display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap}#hearth-demo .hc-primary{background:var(--hc-accent);color:var(--hc-on);border-color:transparent}#hearth-demo .hc-quiet{border:0;background:transparent;color:var(--hc-muted);padding:7px;border-radius:8px}#hearth-demo .hc-banner{background:var(--hc-soft);padding:20px 22px;border-radius:14px;margin-bottom:25px;display:flex;justify-content:space-between;align-items:center;gap:20px}#hearth-demo .hc-banner h2{margin-bottom:5px}#hearth-demo .hc-banner p{font-size:12px}#hearth-demo .hc-progress{height:6px;background:var(--hc-line);border-radius:9px;margin-top:12px;max-width:280px;overflow:hidden}#hearth-demo .hc-progress span{height:100%;background:var(--hc-accent);display:block}#hearth-demo .hc-score{font-size:27px;font-weight:500;white-space:nowrap}#hearth-demo .hc-section-title{display:flex;align-items:center;justify-content:space-between;margin:0 0 14px}#hearth-demo .hc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}#hearth-demo .hc-task{background:var(--hc-panel);padding:18px;border:1px solid var(--hc-line);border-radius:14px;min-width:0}#hearth-demo .hc-task-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}#hearth-demo .hc-room-icon{width:37px;height:37px;border-radius:10px;background:var(--hc-bg);display:flex;align-items:center;justify-content:center}#hearth-demo .hc-tag{font-size:11px;background:var(--hc-warm);padding:4px 8px;border-radius:6px}#hearth-demo .hc-task h2{font-size:15px;margin-bottom:3px}#hearth-demo .hc-task p{font-size:12px}#hearth-demo .hc-task-bottom{border-top:1px solid var(--hc-line);margin-top:16px;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}#hearth-demo .hc-assignee{display:flex;align-items:center;gap:7px;min-width:0}#hearth-demo .hc-assignee select{background:transparent;color:var(--hc-text);border:0;max-width:115px;min-width:0;padding:4px}#hearth-demo .hc-check{width:30px;height:30px;border-radius:50%;border:1px solid var(--hc-line);background:var(--hc-panel);color:var(--hc-muted);display:flex;align-items:center;justify-content:center}#hearth-demo .hc-check[aria-pressed=true]{background:var(--hc-accent);color:var(--hc-on);border-color:transparent}#hearth-demo .hc-done h2{text-decoration:line-through;color:var(--hc-muted)}#hearth-demo .hc-form{background:var(--hc-panel);border:1px solid var(--hc-line);border-radius:14px;padding:22px;margin:0 0 22px}#hearth-demo .hc-form-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}#hearth-demo .hc-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}#hearth-demo label{display:grid;gap:6px;font-size:12px;color:var(--hc-muted)}#hearth-demo input,#hearth-demo .hc-fields select,#hearth-demo .hc-room-row select{width:100%;min-width:0;background:var(--hc-bg);color:var(--hc-text);border:1px solid var(--hc-line);border-radius:8px;padding:10px}#hearth-demo .hc-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}#hearth-demo .hc-member{background:var(--hc-panel);border:1px solid var(--hc-line);border-radius:14px;padding:20px}#hearth-demo .hc-member-head{display:flex;align-items:center;gap:11px;margin-bottom:18px}#hearth-demo .hc-member .hc-avatar{width:44px;height:44px}#hearth-demo .hc-member-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--hc-line);padding-top:12px;gap:8px}#hearth-demo .hc-floor{margin-bottom:20px}#hearth-demo .hc-floor h2{margin-bottom:12px}#hearth-demo .hc-room{background:var(--hc-panel);border:1px solid var(--hc-line);border-radius:12px;padding:15px;display:flex;align-items:center;gap:12px}#hearth-demo .hc-room p{font-size:12px}#hearth-demo .hc-room-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 110px;gap:10px;align-items:end;margin-bottom:12px}#hearth-demo .hc-step{color:var(--hc-accent);font-size:12px;margin-bottom:8px}#hearth-demo .hc-note{font-size:12px;margin-top:12px}#hearth-demo .hc-empty{padding:24px;background:var(--hc-panel);border-radius:12px}#hearth-demo [hidden]{display:none!important}#hearth-demo .hc-feedback{font-size:12px;min-height:20px;margin-top:16px;color:var(--hc-accent)}
+@media(max-width:760px){#hearth-demo .hc-shell{grid-template-columns:145px minmax(0,1fr)}#hearth-demo .hc-side{padding:22px 12px}#hearth-demo .hc-main{padding:24px 20px}#hearth-demo .hc-grid{grid-template-columns:1fr}#hearth-demo .hc-brand{font-size:20px}#hearth-demo .hc-heading{align-items:flex-start}#hearth-demo h1{font-size:26px}}
+@media(max-width:520px){#hearth-demo .hc-shell{display:block}#hearth-demo .hc-side{border-right:0;border-bottom:1px solid var(--hc-line);padding:16px;gap:14px}#hearth-demo .hc-side-bottom{display:none}#hearth-demo nav{display:flex;gap:4px}#hearth-demo .hc-nav{padding:10px;flex:1;justify-content:center}#hearth-demo .hc-main{padding:20px 16px}#hearth-demo .hc-top{margin-bottom:20px}#hearth-demo .hc-heading{flex-wrap:wrap}#hearth-demo .hc-fields,#hearth-demo .hc-room-row{grid-template-columns:1fr}#hearth-demo .hc-banner{padding:16px}#hearth-demo input,#hearth-demo select{font-size:16px}#hearth-demo .hc-top&gt;span{max-width:160px}#hearth-demo .hc-score{font-size:23px}}
+#hearth-demo .hc-responsible{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--hc-warm);border-radius:12px;padding:14px 16px;margin-bottom:22px}#hearth-demo .hc-responsible-info{display:flex;align-items:center;gap:10px}#hearth-demo .hc-responsible-info&gt;span:first-child{width:36px;height:36px;border-radius:10px;background:var(--hc-soft);color:var(--hc-accent);display:flex;align-items:center;justify-content:center}#hearth-demo .hc-responsible-info strong,#hearth-demo .hc-responsible-info small{display:block}#hearth-demo .hc-responsible-info small{color:var(--hc-muted);font-size:12px;margin-top:2px}#hearth-demo .hc-responsible label{display:flex;align-items:center;gap:9px;color:var(--hc-muted);font-size:12px}#hearth-demo .hc-owner-badge{display:inline-flex;align-items:center;gap:4px;background:var(--hc-soft);color:var(--hc-accent);border-radius:6px;padding:3px 7px;font-size:11px;margin-top:5px}#hearth-demo #hc-house-owner{margin-top:3px;color:var(--hc-accent)}@media(max-width:520px){#hearth-demo .hc-responsible{align-items:stretch}#hearth-demo .hc-responsible label{width:100%;justify-content:space-between}#hearth-demo .hc-responsible select{min-width:0;max-width:62%}}
+&lt;/style&gt;
+&lt;style&gt;
+#hearth-demo .hc-tools{margin-top:14px}#hearth-demo .hc-tools-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}#hearth-demo .hc-tools-head span{font-size:12px;color:var(--hc-muted)}#hearth-demo .hc-tool-list{display:flex;flex-wrap:wrap;gap:5px}#hearth-demo .hc-tool-pill{font-size:12px;padding:4px 8px;border-radius:6px;background:var(--hc-bg);overflow-wrap:anywhere}#hearth-demo .hc-edit-tools{font-size:12px;padding:4px 7px;border:0;background:transparent;color:var(--hc-accent);border-radius:6px}#hearth-demo .hc-tool-fields{border:0;padding:0;margin:20px 0 0;min-width:0}#hearth-demo .hc-tool-fields legend{font-size:14px;margin-bottom:10px}#hearth-demo .hc-tool-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:14px}#hearth-demo .hc-tool-option{display:flex;align-items:center;gap:7px;padding:9px;border:1px solid var(--hc-line);border-radius:8px;color:var(--hc-text)}#hearth-demo .hc-tool-option input{width:16px;height:16px;padding:0;flex-shrink:0;accent-color:var(--hc-accent)}@media(max-width:760px){#hearth-demo .hc-tool-options{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){#hearth-demo .hc-tool-options{grid-template-columns:1fr}}
+&lt;/style&gt;
+&lt;div class=&quot;hc-shell&quot;&gt;
+&lt;style&gt;
+#hearth-demo .hc-user-wrap{position:relative}#hearth-demo button.hc-profile{border:0;background:transparent;color:var(--hc-text);padding:5px 7px;border-radius:10px;min-height:44px}#hearth-demo button.hc-profile[aria-expanded=true]{background:var(--hc-soft);color:var(--hc-accent)}#hearth-demo .hc-user-menu{position:absolute;z-index:30;right:0;top:50px;width:245px;max-width:calc(100vw - 32px);padding:10px;background:var(--hc-panel);border:1px solid var(--hc-line);border-radius:14px;box-shadow:0 14px 40px light-dark(rgb(105 70 28 / .18),rgb(0 0 0 / .34))}#hearth-demo .hc-user-summary{display:flex;align-items:center;gap:10px;padding:8px 9px 12px;border-bottom:1px solid var(--hc-line);margin-bottom:6px}#hearth-demo .hc-user-summary&gt;span:last-child{display:grid}#hearth-demo .hc-user-summary small{color:var(--hc-muted);font-size:11px}#hearth-demo .hc-user-menu&gt;button{width:100%;border:0;background:transparent;color:var(--hc-text);padding:10px;border-radius:9px;display:flex;align-items:center;gap:9px;text-align:left}#hearth-demo .hc-user-menu&gt;button:hover,#hearth-demo .hc-user-menu&gt;button:focus-visible{background:var(--hc-bg)}#hearth-demo .hc-member-spaces{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}#hearth-demo .hc-member-spaces span{font-size:11px;background:var(--hc-soft);color:var(--hc-accent);padding:3px 7px;border-radius:6px}#hearth-demo .hc-membership-list{border:0;padding:0;margin:18px 0 0}#hearth-demo .hc-membership-list legend{font-size:14px;margin-bottom:8px}#hearth-demo .hc-membership-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#hearth-demo .hc-membership-options label{display:flex;align-items:center;gap:8px;padding:9px;background:var(--hc-bg);border-radius:8px;color:var(--hc-text)}#hearth-demo .hc-membership-options input{width:16px;height:16px;padding:0;accent-color:var(--hc-accent)}@media(max-width:520px){#hearth-demo .hc-user-menu{right:0}#hearth-demo button.hc-profile&gt;span:nth-child(2){display:none}#hearth-demo .hc-membership-options{grid-template-columns:1fr}}
+#hearth-demo .hc-house-wrap{position:relative}#hearth-demo .hc-house{width:100%;border:0;color:var(--hc-text);text-align:left;display:flex;align-items:center;justify-content:space-between;gap:8px}#hearth-demo .hc-house&gt;span{display:grid}#hearth-demo .hc-house-menu{position:absolute;z-index:30;left:0;top:calc(100% + 8px);width:290px;max-width:calc(100vw - 32px);padding:12px;background:var(--hc-panel);border:1px solid var(--hc-line);border-radius:14px;box-shadow:0 14px 40px light-dark(rgb(105 70 28 / .18),rgb(0 0 0 / .34))}#hearth-demo .hc-space-list{display:grid;gap:5px;margin-bottom:9px}#hearth-demo .hc-space-option{width:100%;border:0;background:transparent;color:var(--hc-text);padding:10px;border-radius:9px;text-align:left;display:flex;align-items:center;gap:10px}#hearth-demo .hc-space-option[aria-current=true]{background:var(--hc-soft);color:var(--hc-accent)}#hearth-demo .hc-space-option&gt;span:nth-child(2){display:grid;min-width:0}#hearth-demo .hc-space-option small{color:var(--hc-muted);font-size:11px}#hearth-demo .hc-space-icon{width:34px;height:34px;border-radius:9px;background:var(--hc-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0}#hearth-demo .hc-create-space{width:100%;justify-content:center}#hearth-demo .hc-space-form{display:grid;gap:11px}#hearth-demo .hc-space-form-head{display:flex;align-items:center;justify-content:space-between;gap:8px}#hearth-demo .hc-space-form input,#hearth-demo .hc-space-form select{width:100%;min-width:0;background:var(--hc-bg);color:var(--hc-text);border:1px solid var(--hc-line);border-radius:8px;padding:9px}#hearth-demo .hc-space-form-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}@media(max-width:520px){#hearth-demo .hc-side{position:relative}#hearth-demo .hc-house-menu{left:0}#hearth-demo .hc-house{padding:10px 12px}#hearth-demo .hc-house-info{display:block}}
+#hearth-demo select{color:var(--hc-text);background-color:var(--hc-panel);border:1px solid var(--hc-line);border-radius:9px;padding:9px 30px 9px 11px;cursor:pointer;transition:border-color 150ms ease,background-color 150ms ease}#hearth-demo select:hover{border-color:var(--hc-accent)}#hearth-demo select:focus-visible{border-color:var(--hc-accent)}#hearth-demo select:disabled{cursor:default;opacity:.55}#hearth-demo .hc-assignee select{background:var(--hc-bg);border:1px solid var(--hc-line);padding:7px 26px 7px 9px}#hearth-demo[data-theme=light] select option,#hearth-demo[data-theme=light] select optgroup{background:#fff9ef;color:#3c2d1d}#hearth-demo[data-theme=dark] select option,#hearth-demo[data-theme=dark] select optgroup{background:#2c2720;color:#f8efdf}#hearth-demo[data-theme=light] select option:checked{background:#a45c0c;color:#fffaf1}#hearth-demo[data-theme=dark] select option:checked{background:#efb454;color:#30200b}@media(prefers-reduced-motion:reduce){#hearth-demo select{transition:none}}
+#hearth-demo .hc-notification-wrap{position:relative}#hearth-demo #hc-notification-button{position:relative;width:44px;height:44px;border:0;background:transparent;color:var(--hc-text);border-radius:10px;display:flex;align-items:center;justify-content:center}#hearth-demo #hc-notification-button[aria-expanded=true]{background:var(--hc-soft);color:var(--hc-accent)}#hearth-demo #hc-notification-count{position:absolute;right:3px;top:2px;min-width:18px;height:18px;padding:0 5px;border-radius:10px;background:var(--hc-accent);color:var(--hc-on);font-size:11px;line-height:18px;text-align:center}#hearth-demo .hc-notifications{position:absolute;z-index:20;right:0;top:50px;width:350px;max-width:calc(100vw - 32px);background:var(--hc-panel);border:1px solid var(--hc-line);border-radius:14px;padding:14px;box-shadow:0 14px 40px light-dark(rgb(105 70 28 / .18),rgb(0 0 0 / .34))}#hearth-demo .hc-notification-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 2px 12px}#hearth-demo .hc-notification-head button{border:0;background:transparent;color:var(--hc-accent);font-size:12px;padding:7px}#hearth-demo .hc-notification-list{list-style:none;margin:0;padding:0;display:grid;gap:4px}#hearth-demo .hc-notification-item{width:100%;border:0;background:transparent;color:var(--hc-text);text-align:left;border-radius:9px;padding:11px;display:grid;grid-template-columns:9px minmax(0,1fr);gap:9px}#hearth-demo .hc-notification-item:hover,#hearth-demo .hc-notification-item:focus-visible{background:var(--hc-bg)}#hearth-demo .hc-notification-dot{width:8px;height:8px;border-radius:50%;background:transparent;margin-top:6px}#hearth-demo .hc-notification-item[aria-pressed=false] .hc-notification-dot{background:var(--hc-accent)}#hearth-demo .hc-notification-item strong{display:block;font-weight:500}#hearth-demo .hc-notification-item small{display:block;color:var(--hc-muted);font-size:12px;margin-top:2px}#hearth-demo .hc-notification-settings{border-top:1px solid var(--hc-line);margin-top:10px;padding-top:10px}#hearth-demo .hc-notification-settings summary{cursor:pointer;color:var(--hc-muted);font-size:12px;padding:6px}#hearth-demo .hc-pref-list{display:grid;gap:4px;margin-top:6px}#hearth-demo .hc-pref-list label{display:flex;align-items:center;gap:8px;padding:6px;color:var(--hc-text)}#hearth-demo .hc-pref-list input{width:16px;height:16px;padding:0;accent-color:var(--hc-accent)}@media(max-width:520px){#hearth-demo .hc-notifications{right:-58px}#hearth-demo .hc-notification-item{min-height:44px}}
+#hearth-demo .hc-repeat{display:flex;align-items:center;gap:7px;color:var(--hc-muted);font-size:11px}#hearth-demo .hc-repeat select{width:auto;min-width:92px;background:var(--hc-warm);color:var(--hc-text);border:0;border-radius:7px;padding:6px 25px 6px 8px;font-size:12px}#hearth-demo .hc-plan-task .hc-repeat{justify-content:space-between;margin-top:10px}#hearth-demo .hc-plan-task .hc-repeat select{background:var(--hc-panel)}@media(max-width:520px){#hearth-demo .hc-repeat select{font-size:16px}#hearth-demo .hc-task-top{align-items:flex-start}#hearth-demo .hc-task-top .hc-repeat{align-items:flex-end;flex-direction:column;gap:3px}}
+#hearth-demo .hc-week-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}#hearth-demo .hc-week-actions{display:flex;gap:7px;flex-wrap:wrap}#hearth-demo .hc-week-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}#hearth-demo .hc-day{background:var(--hc-panel);border:1px solid var(--hc-line);border-radius:14px;padding:14px;min-width:0;min-height:125px}#hearth-demo .hc-day-heading{border-bottom:1px solid var(--hc-line);padding-bottom:10px;margin-bottom:12px}#hearth-demo .hc-day-heading h2{font-size:14px}#hearth-demo .hc-day-empty{font-size:12px;padding:8px 0}#hearth-demo .hc-plan-task{background:var(--hc-bg);border-radius:9px;padding:12px;margin-top:10px;min-width:0}#hearth-demo .hc-plan-task h3{font-size:14px;font-weight:500;margin:0 0 5px;overflow-wrap:anywhere}#hearth-demo .hc-plan-task p{font-size:12px}#hearth-demo .hc-plan-person{display:flex;align-items:center;gap:7px;margin-top:13px;font-size:12px;flex-wrap:wrap}#hearth-demo .hc-plan-person .hc-check{margin-left:auto}#hearth-demo .hc-plan-person .hc-avatar{width:26px;height:26px}#hearth-demo .hc-plan-status{font-size:11px;color:var(--hc-accent);margin-top:8px}#hearth-demo .hc-plan-date{margin-top:10px}#hearth-demo .hc-plan-date input{padding:6px;font-size:12px;width:100%;min-width:0}@media(max-width:850px){#hearth-demo .hc-week-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){#hearth-demo .hc-week-grid{grid-template-columns:1fr}#hearth-demo nav{flex-wrap:wrap}#hearth-demo .hc-nav{flex-basis:40%}#hearth-demo .hc-plan-date input{font-size:16px}}
+#hearth-demo .hc-chore-tabs{display:flex;gap:5px;border-bottom:1px solid var(--hc-line);margin-bottom:22px;flex-wrap:wrap}#hearth-demo .hc-chore-tabs button{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--hc-muted);padding:10px 13px;min-height:44px;display:flex;align-items:center;gap:8px}#hearth-demo .hc-chore-tabs button[aria-pressed=true]{border-bottom-color:var(--hc-accent);color:var(--hc-accent)}#hearth-demo .hc-chore-tabs span{background:var(--hc-soft);padding:1px 7px;border-radius:6px;font-size:12px}
+#hearth-demo #hc-theme-toggle{display:flex;align-items:center;justify-content:center;width:54px;min-height:44px;border:0;padding:0;background:transparent;color:var(--hc-text);border-radius:12px}#hearth-demo .hc-theme-track{display:block;position:relative;width:48px;height:28px;background:var(--hc-line);border-radius:20px;transition:background-color 180ms ease}#hearth-demo .hc-theme-thumb{position:absolute;left:4px;top:4px;width:20px;height:20px;background:var(--hc-panel);border-radius:50%;transition:transform 180ms ease}#hearth-demo #hc-theme-toggle[aria-checked=true] .hc-theme-track{background:var(--hc-accent)}#hearth-demo #hc-theme-toggle[aria-checked=true] .hc-theme-thumb{transform:translateX(20px);background:var(--hc-on)}@media(prefers-reduced-motion:reduce){#hearth-demo .hc-theme-track,#hearth-demo .hc-theme-thumb{transition:none}}
+&lt;/style&gt;
+&lt;aside class=&quot;hc-side&quot;&gt;&lt;div class=&quot;hc-brand&quot;&gt;&lt;span class=&quot;hc-logo&quot;&gt;&lt;i data-lucide=&quot;house&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;hearth&lt;span style=&quot;color:var(--hc-accent)&quot;&gt;.&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;hc-house-wrap&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;hc-house&quot; id=&quot;hc-house-switcher&quot; aria-label=&quot;Switch shared space&quot; aria-expanded=&quot;false&quot;&gt;&lt;span&gt;&lt;span class=&quot;hc-label&quot;&gt;OUR SHARED SPACE&lt;/span&gt;&lt;strong id=&quot;hc-house-name&quot;&gt;Maple House&lt;/strong&gt;&lt;span class=&quot;hc-label&quot; id=&quot;hc-house-info&quot;&gt;&lt;/span&gt;&lt;span class=&quot;hc-label&quot; id=&quot;hc-house-owner&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;i data-lucide=&quot;chevrons-up-down&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;section id=&quot;hc-house-menu&quot; class=&quot;hc-house-menu&quot; aria-label=&quot;Shared spaces&quot; hidden&gt;&lt;/section&gt;&lt;/div&gt;&lt;nav aria-label=&quot;Main navigation&quot;&gt;&lt;button class=&quot;hc-nav&quot; data-view=&quot;chores&quot; aria-current=&quot;page&quot;&gt;&lt;i data-lucide=&quot;circle-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Chores&lt;/button&gt;&lt;button class=&quot;hc-nav&quot; data-view=&quot;planning&quot;&gt;&lt;i data-lucide=&quot;calendar-days&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Planning&lt;/button&gt;&lt;button class=&quot;hc-nav&quot; data-view=&quot;people&quot;&gt;&lt;i data-lucide=&quot;users&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;People&lt;/button&gt;&lt;button class=&quot;hc-nav&quot; data-view=&quot;home&quot;&gt;&lt;i data-lucide=&quot;house&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Our home&lt;/button&gt;&lt;/nav&gt;&lt;div class=&quot;hc-side-bottom&quot;&gt;&lt;div class=&quot;hc-label&quot;&gt;A little together, every day.&lt;/div&gt;&lt;p style=&quot;font-size:12px;margin-top:8px&quot;&gt;A happier home starts with a shared load.&lt;/p&gt;&lt;/div&gt;&lt;/aside&gt;
+&lt;main class=&quot;hc-main&quot;&gt;&lt;div class=&quot;hc-top&quot;&gt;&lt;span&gt;&lt;span id=&quot;hc-current-house-breadcrumb&quot;&gt;Maple House&lt;/span&gt; / &lt;span id=&quot;hc-breadcrumb&quot;&gt;Chores&lt;/span&gt;&lt;/span&gt;&lt;div class=&quot;hc-top-actions&quot;&gt;&lt;div class=&quot;hc-theme&quot;&gt;&lt;span id=&quot;hc-theme-state&quot;&gt;Light&lt;/span&gt;&lt;button type=&quot;button&quot; id=&quot;hc-theme-toggle&quot; role=&quot;switch&quot; aria-checked=&quot;false&quot; aria-label=&quot;Dark theme&quot;&gt;&lt;span class=&quot;hc-theme-track&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;hc-theme-thumb&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;hc-notification-wrap&quot;&gt;&lt;button type=&quot;button&quot; id=&quot;hc-notification-button&quot; aria-label=&quot;Notifications&quot; aria-expanded=&quot;false&quot;&gt;&lt;i data-lucide=&quot;bell&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span id=&quot;hc-notification-count&quot; hidden&gt;&lt;/span&gt;&lt;/button&gt;&lt;section id=&quot;hc-notifications&quot; class=&quot;hc-notifications&quot; aria-label=&quot;Notification center&quot; hidden&gt;&lt;/section&gt;&lt;/div&gt;&lt;div class=&quot;hc-user-wrap&quot;&gt;&lt;button type=&quot;button&quot; id=&quot;hc-user-button&quot; class=&quot;hc-profile&quot; aria-label=&quot;Open user menu&quot; aria-expanded=&quot;false&quot;&gt;&lt;span class=&quot;hc-avatar&quot;&gt;J&lt;/span&gt;&lt;span&gt;Jamie&lt;/span&gt;&lt;i data-lucide=&quot;chevron-down&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;section id=&quot;hc-user-menu&quot; class=&quot;hc-user-menu&quot; aria-label=&quot;User menu&quot; hidden&gt;&lt;div class=&quot;hc-user-summary&quot;&gt;&lt;span class=&quot;hc-avatar&quot;&gt;J&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Jamie&lt;/strong&gt;&lt;small&gt;Household account&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;&lt;button type=&quot;button&quot; data-user-action=&quot;profile&quot;&gt;&lt;i data-lucide=&quot;user-round&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; My profile&lt;/button&gt;&lt;button type=&quot;button&quot; data-user-action=&quot;people&quot;&gt;&lt;i data-lucide=&quot;users&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Manage all people&lt;/button&gt;&lt;button type=&quot;button&quot; data-user-action=&quot;notifications&quot;&gt;&lt;i data-lucide=&quot;bell&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Notification preferences&lt;/button&gt;&lt;/section&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=&quot;hc-content&quot;&gt;&lt;/div&gt;&lt;div id=&quot;hc-feedback&quot; class=&quot;hc-feedback&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;&lt;/main&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(()=&gt;{
+const root=document.getElementById(&#x27;hearth-demo&#x27;),content=root.querySelector(&#x27;#hc-content&#x27;);
+root.querySelector(&#x27;#hc-theme-toggle&#x27;).addEventListener(&#x27;click&#x27;,e=&gt;{const dark=root.dataset.theme!==&#x27;dark&#x27;;root.dataset.theme=dark?&#x27;dark&#x27;:&#x27;light&#x27;;e.currentTarget.setAttribute(&#x27;aria-checked&#x27;,String(dark));root.querySelector(&#x27;#hc-theme-state&#x27;).textContent=dark?&#x27;Dark&#x27;:&#x27;Light&#x27;});
+const types=[&#x27;Kitchen&#x27;,&#x27;Bathroom&#x27;,&#x27;Living room&#x27;,&#x27;Bedroom&#x27;,&#x27;Dining room&#x27;,&#x27;Office&#x27;,&#x27;Laundry room&#x27;,&#x27;Hallway&#x27;,&#x27;Balcony&#x27;,&#x27;Garden&#x27;,&#x27;Other&#x27;];
+const icons={&#x27;Kitchen&#x27;:&#x27;cooking-pot&#x27;,&#x27;Bathroom&#x27;:&#x27;bath&#x27;,&#x27;Living room&#x27;:&#x27;sofa&#x27;,&#x27;Bedroom&#x27;:&#x27;bed-double&#x27;,&#x27;Dining room&#x27;:&#x27;utensils&#x27;,&#x27;Office&#x27;:&#x27;monitor&#x27;,&#x27;Laundry room&#x27;:&#x27;washing-machine&#x27;,&#x27;Hallway&#x27;:&#x27;door-open&#x27;,&#x27;Balcony&#x27;:&#x27;flower-2&#x27;,&#x27;Garden&#x27;:&#x27;sprout&#x27;,&#x27;Other&#x27;:&#x27;house&#x27;};
+let people=[{id:1,name:&#x27;Jamie&#x27;,role:&#x27;Roommate&#x27;},{id:2,name:&#x27;Alex&#x27;,role:&#x27;Roommate&#x27;},{id:3,name:&#x27;Sam&#x27;,role:&#x27;Roommate&#x27;}];
+let rooms=[{id:1,name:&#x27;Kitchen&#x27;,type:&#x27;Kitchen&#x27;,floor:1},{id:2,name:&#x27;Living room&#x27;,type:&#x27;Living room&#x27;,floor:1},{id:3,name:&#x27;Downstairs bathroom&#x27;,type:&#x27;Bathroom&#x27;,floor:1},{id:4,name:&#x27;Jamie’s bedroom&#x27;,type:&#x27;Bedroom&#x27;,floor:2},{id:5,name:&#x27;Alex’s bedroom&#x27;,type:&#x27;Bedroom&#x27;,floor:2},{id:6,name:&#x27;Upstairs bathroom&#x27;,type:&#x27;Bathroom&#x27;,floor:2}];
+let chores=[{id:1,name:&#x27;Wipe counters &amp; stovetop&#x27;,room:1,person:1,time:&#x27;10 min&#x27;,frequency:&#x27;Daily&#x27;,done:false},{id:2,name:&#x27;Vacuum the living room&#x27;,room:2,person:2,time:&#x27;20 min&#x27;,frequency:&#x27;Weekly&#x27;,done:false},{id:3,name:&#x27;Clean sink &amp; mirror&#x27;,room:3,person:3,time:&#x27;15 min&#x27;,frequency:&#x27;Weekly&#x27;,done:false},{id:4,name:&#x27;Take out the recycling&#x27;,room:1,person:2,time:&#x27;5 min&#x27;,frequency:&#x27;Weekly&#x27;,done:true}];
+const commonTools=[&#x27;Vacuum&#x27;,&#x27;Broom&#x27;,&#x27;Dustpan&#x27;,&#x27;Mop&#x27;,&#x27;Bucket&#x27;,&#x27;Microfiber cloth&#x27;,&#x27;Sponge&#x27;,&#x27;Scrub brush&#x27;,&#x27;Cleaning spray&#x27;,&#x27;Glass cleaner&#x27;,&#x27;Gloves&#x27;,&#x27;Bin bags&#x27;];
+chores.forEach((c,i)=&gt;c.tools=[[&#x27;Microfiber cloth&#x27;,&#x27;Cleaning spray&#x27;],[&#x27;Vacuum&#x27;],[&#x27;Sponge&#x27;,&#x27;Microfiber cloth&#x27;,&#x27;Glass cleaner&#x27;],[&#x27;Bin bags&#x27;]][i]);
+let view=&#x27;chores&#x27;,choreScope=&#x27;all&#x27;,peopleScope=&#x27;current&#x27;,editor=null,floors=2,draft=[];let nextId=20;
+const dateKey=d=&gt;d.getFullYear()+&#x27;-&#x27;+String(d.getMonth()+1).padStart(2,&#x27;0&#x27;)+&#x27;-&#x27;+String(d.getDate()).padStart(2,&#x27;0&#x27;);
+const parseDate=s=&gt;new Date(s+&#x27;T12:00:00&#x27;);
+const addDays=(s,n)=&gt;{const d=parseDate(s);d.setDate(d.getDate()+n);return dateKey(d)};
+const today=dateKey(new Date());
+const weekStart=s=&gt;addDays(s,-((parseDate(s).getDay()+6)%7));
+let planningWeek=weekStart(today),planningMode=&#x27;scheduled&#x27;;
+chores.forEach((c,i)=&gt;{c.scheduled=addDays(planningWeek,[6,5,4,2][i]);c.doneOn=c.done?c.scheduled:null;c.doneBy=c.done?&#x27;Alex&#x27;:null});
+const shortDate=s=&gt;parseDate(s).toLocaleDateString(&#x27;en-US&#x27;,{month:&#x27;short&#x27;,day:&#x27;numeric&#x27;});
+let houses=[{id:1,name:&#x27;Maple House&#x27;,type:&#x27;House&#x27;,floors,people,rooms,chores,responsibleId:1},{id:2,name:&#x27;City Apartment&#x27;,type:&#x27;Apartment&#x27;,floors:1,people:[{id:101,name:&#x27;Jamie&#x27;,role:&#x27;Family member&#x27;},{id:102,name:&#x27;Morgan&#x27;,role:&#x27;Roommate&#x27;}],rooms:[{id:101,name:&#x27;Kitchen&#x27;,type:&#x27;Kitchen&#x27;,floor:1},{id:102,name:&#x27;Living room&#x27;,type:&#x27;Living room&#x27;,floor:1},{id:103,name:&#x27;Main bedroom&#x27;,type:&#x27;Bedroom&#x27;,floor:1},{id:104,name:&#x27;Bathroom&#x27;,type:&#x27;Bathroom&#x27;,floor:1}],chores:[{id:101,name:&#x27;Mop the kitchen floor&#x27;,room:101,person:102,time:&#x27;20 min&#x27;,frequency:&#x27;Weekly&#x27;,tools:[&#x27;Mop&#x27;,&#x27;Bucket&#x27;],scheduled:addDays(planningWeek,2),done:false,doneOn:null,doneBy:null},{id:102,name:&#x27;Clean the bathroom&#x27;,room:104,person:101,time:&#x27;30 min&#x27;,frequency:&#x27;Weekly&#x27;,tools:[&#x27;Sponge&#x27;,&#x27;Cleaning spray&#x27;,&#x27;Gloves&#x27;],scheduled:addDays(planningWeek,5),done:false,doneOn:null,doneBy:null}],responsibleId:101}];
+let currentHouseId=1,houseCreator=false;
+const currentHouse=()=&gt;houses.find(h=&gt;h.id===currentHouseId);
+const responsibleFor=h=&gt;h.people.find(p=&gt;p.id===h.responsibleId)||h.people[0]||null;
+const activeUserId=()=&gt;people.find(p=&gt;p.name===&#x27;Jamie&#x27;)?.id??people[0]?.id??0;
+function saveCurrentHouse(){const h=currentHouse();if(h)Object.assign(h,{floors,people,rooms,chores})}
+function switchHouse(id){saveCurrentHouse();const h=houses.find(h=&gt;h.id===id);if(!h)return;currentHouseId=h.id;floors=h.floors;people=h.people;rooms=h.rooms;chores=h.chores;planningWeek=weekStart(today);planningMode=&#x27;scheduled&#x27;;editor=null;houseCreator=false;root.querySelector(&#x27;#hc-house-menu&#x27;).hidden=true;root.querySelector(&#x27;#hc-house-switcher&#x27;).setAttribute(&#x27;aria-expanded&#x27;,&#x27;false&#x27;);feedback(&#x27;Now viewing &#x27;+h.name+&#x27;.&#x27;);render()}
+let notificationId=4;
+let notifications=[
+{id:1,title:&#x27;Vacuum the living room is due today&#x27;,detail:&#x27;Alex · Living room · 20 min&#x27;,read:false},
+{id:2,title:&#x27;A chore was assigned to you&#x27;,detail:&#x27;Wipe counters &amp; stovetop · Today&#x27;,read:false},
+{id:3,title:&#x27;Alex completed the recycling&#x27;,detail:&#x27;Completed earlier this week&#x27;,read:true}
+];
+let notificationPrefs={assignments:true,reminders:true,completions:true};
+const esc=s=&gt;String(s).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g,c=&gt;({&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;,&quot;&#x27;&quot;:&#x27;&amp;#39;&#x27;}[c]));
+const icon=(name)=&gt;&#x27;&lt;i data-lucide=&quot;&#x27;+name+&#x27;&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&#x27;;
+const options=(arr,value)=&gt;arr.map(x=&gt;&#x27;&lt;option value=&quot;&#x27;+esc(x.id??x)+&#x27;&quot; &#x27;+((x.id??x)==value?&#x27;selected&#x27;:&#x27;&#x27;)+&#x27;&gt;&#x27;+esc(x.name??x)+&#x27;&lt;/option&gt;&#x27;).join(&#x27;&#x27;);
+const repeatOptions=[&#x27;One-off&#x27;,&#x27;Daily&#x27;,&#x27;Weekly&#x27;,&#x27;Monthly&#x27;];
+const repeatControl=c=&gt;&#x27;&lt;label class=&quot;hc-repeat&quot;&gt;&lt;span&gt;Repeats&lt;/span&gt;&lt;select data-repeat=&quot;&#x27;+c.id+&#x27;&quot; aria-label=&quot;Recurrence for &#x27;+esc(c.name)+&#x27;&quot;&gt;&#x27;+options(repeatOptions,c.frequency)+&#x27;&lt;/select&gt;&lt;/label&gt;&#x27;;
+const feedback=t=&gt;root.querySelector(&#x27;#hc-feedback&#x27;).textContent=t;
+function addNotification(title,detail,kind=&#x27;reminders&#x27;){
+if(!notificationPrefs[kind])return;
+notifications.unshift({id:notificationId++,title,detail,read:false});
+renderNotifications();
+}
+function renderNotifications(){
+const panel=root.querySelector(&#x27;#hc-notifications&#x27;),count=root.querySelector(&#x27;#hc-notification-count&#x27;),unread=notifications.filter(n=&gt;!n.read).length;
+count.textContent=unread&gt;9?&#x27;9+&#x27;:String(unread);count.hidden=!unread;
+panel.innerHTML=&#x27;&lt;div class=&quot;hc-notification-head&quot;&gt;&lt;h2&gt;Notifications&lt;/h2&gt;&lt;button type=&quot;button&quot; data-notification-action=&quot;read-all&quot; &#x27;+(!unread?&#x27;disabled&#x27;:&#x27;&#x27;)+&#x27;&gt;Mark all read&lt;/button&gt;&lt;/div&gt;&lt;ul class=&quot;hc-notification-list&quot;&gt;&#x27;+notifications.map(n=&gt;&#x27;&lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;hc-notification-item&quot; data-notification-id=&quot;&#x27;+n.id+&#x27;&quot; aria-pressed=&quot;&#x27;+n.read+&#x27;&quot;&gt;&lt;span class=&quot;hc-notification-dot&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&#x27;+esc(n.title)+&#x27;&lt;/strong&gt;&lt;small&gt;&#x27;+esc(n.detail)+&#x27;&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;&#x27;).join(&#x27;&#x27;)+&#x27;&lt;/ul&gt;&lt;details class=&quot;hc-notification-settings&quot;&gt;&lt;summary&gt;Notification preferences&lt;/summary&gt;&lt;div class=&quot;hc-pref-list&quot;&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; data-notification-pref=&quot;assignments&quot; &#x27;+(notificationPrefs.assignments?&#x27;checked&#x27;:&#x27;&#x27;)+&#x27;&gt;Assignments&lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; data-notification-pref=&quot;reminders&quot; &#x27;+(notificationPrefs.reminders?&#x27;checked&#x27;:&#x27;&#x27;)+&#x27;&gt;Due-date reminders&lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; data-notification-pref=&quot;completions&quot; &#x27;+(notificationPrefs.completions?&#x27;checked&#x27;:&#x27;&#x27;)+&#x27;&gt;Completion updates&lt;/label&gt;&lt;/div&gt;&lt;/details&gt;&#x27;;
+root.querySelector(&#x27;#hc-notification-button&#x27;).setAttribute(&#x27;aria-label&#x27;,&#x27;Notifications&#x27;+(unread?&#x27; (&#x27;+unread+&#x27; unread)&#x27;:&#x27;&#x27;));
+}
+function renderHouseMenu(){
+const h=currentHouse(),menu=root.querySelector(&#x27;#hc-house-menu&#x27;);
+root.querySelector(&#x27;#hc-house-name&#x27;).textContent=h.name;
+root.querySelector(&#x27;#hc-house-info&#x27;).textContent=people.length+&#x27; people · &#x27;+rooms.length+&#x27; rooms · &#x27;+floors+&#x27; floor&#x27;+(floors===1?&#x27;&#x27;:&#x27;s&#x27;);
+root.querySelector(&#x27;#hc-house-owner&#x27;).textContent=&#x27;Responsible · &#x27;+(responsibleFor(h)?.name||&#x27;Not assigned&#x27;);
+root.querySelector(&#x27;#hc-current-house-breadcrumb&#x27;).textContent=h.name;
+if(houseCreator){menu.innerHTML=&#x27;&lt;form class=&quot;hc-space-form&quot; id=&quot;hc-space-form&quot;&gt;&lt;div class=&quot;hc-space-form-head&quot;&gt;&lt;h2&gt;New shared space&lt;/h2&gt;&lt;button type=&quot;button&quot; class=&quot;hc-quiet&quot; data-space-action=&quot;cancel&quot; aria-label=&quot;Cancel creating shared space&quot;&gt;&#x27;+icon(&#x27;x&#x27;)+&#x27;&lt;/button&gt;&lt;/div&gt;&lt;label&gt;Space name&lt;input name=&quot;name&quot; required maxlength=&quot;45&quot; placeholder=&quot;e.g. Lake House&quot;&gt;&lt;/label&gt;&lt;label&gt;Type&lt;select name=&quot;type&quot;&gt;&#x27;+options([&#x27;House&#x27;,&#x27;Apartment&#x27;,&#x27;Shared house&#x27;,&#x27;Other&#x27;],&#x27;Apartment&#x27;)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;div class=&quot;hc-space-form-row&quot;&gt;&lt;label&gt;Floors&lt;input name=&quot;floors&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;6&quot; value=&quot;1&quot; required&gt;&lt;/label&gt;&lt;label&gt;Rooms&lt;input name=&quot;rooms&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;24&quot; value=&quot;4&quot; required&gt;&lt;/label&gt;&lt;/div&gt;&lt;button class=&quot;hc-button hc-primary hc-create-space&quot;&gt;Create shared space&lt;/button&gt;&lt;/form&gt;&#x27;;return}
+menu.innerHTML=&#x27;&lt;div class=&quot;hc-space-list&quot;&gt;&#x27;+houses.map(space=&gt;&#x27;&lt;button type=&quot;button&quot; class=&quot;hc-space-option&quot; data-house-id=&quot;&#x27;+space.id+&#x27;&quot; aria-current=&quot;&#x27;+(space.id===currentHouseId)+&#x27;&quot;&gt;&lt;span class=&quot;hc-space-icon&quot;&gt;&#x27;+icon(space.type===&#x27;Apartment&#x27;?&#x27;building-2&#x27;:space.type===&#x27;Shared house&#x27;?&#x27;users&#x27;:&#x27;house&#x27;)+&#x27;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&#x27;+esc(space.name)+&#x27;&lt;/strong&gt;&lt;small&gt;&#x27;+esc(space.type)+&#x27; · Responsible: &#x27;+esc(responsibleFor(space)?.name||&#x27;Not assigned&#x27;)+&#x27;&lt;/small&gt;&lt;small&gt;&#x27;+space.people.length+&#x27; people · &#x27;+space.rooms.length+&#x27; rooms&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;&#x27;).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&lt;button type=&quot;button&quot; class=&quot;hc-button hc-create-space&quot; data-space-action=&quot;create&quot;&gt;&#x27;+icon(&#x27;plus&#x27;)+&#x27; Create another shared space&lt;/button&gt;&#x27;;
+}
+const head=(title,sub,button)=&gt;&#x27;&lt;div class=&quot;hc-heading&quot;&gt;&lt;div&gt;&lt;h1&gt;&#x27;+title+&#x27;&lt;/h1&gt;&lt;p&gt;&#x27;+sub+&#x27;&lt;/p&gt;&lt;/div&gt;&#x27;+button+&#x27;&lt;/div&gt;&#x27;;
+const button=(label,action,primary=false)=&gt;&#x27;&lt;button class=&quot;hc-button &#x27;+(primary?&#x27;hc-primary&#x27;:&#x27;&#x27;)+&#x27;&quot; data-action=&quot;&#x27;+action+&#x27;&quot;&gt;&#x27;+label+&#x27;&lt;/button&gt;&#x27;;
+function allMembers(){const map=new Map();houses.forEach(h=&gt;h.people.forEach(person=&gt;{const key=person.name.trim().toLowerCase();if(!map.has(key))map.set(key,{key,name:person.name,role:person.role,memberships:[]});map.get(key).memberships.push({house:h,person})}));return [...map.values()].sort((a,b)=&gt;a.name.localeCompare(b.name))}
+function render(){
+saveCurrentHouse();renderHouseMenu();
+root.querySelector(&#x27;#hc-breadcrumb&#x27;).textContent={chores:&#x27;Chores&#x27;,planning:&#x27;Planning&#x27;,people:&#x27;People&#x27;,home:&#x27;Our home&#x27;}[view];
+root.querySelectorAll(&#x27;[data-view]&#x27;).forEach(b=&gt;{if(b.dataset.view===view)b.setAttribute(&#x27;aria-current&#x27;,&#x27;page&#x27;);else b.removeAttribute(&#x27;aria-current&#x27;)});
+let html=&#x27;&#x27;;
+if(view===&#x27;chores&#x27;){
+const visibleChores=choreScope===&#x27;mine&#x27;?chores.filter(c=&gt;c.person===activeUserId()):chores;
+const done=visibleChores.filter(c=&gt;c.done).length;
+html=head(&#x27;A home we care for, together.&#x27;,&#x27;Small tasks. Shared responsibility.&#x27;,button(icon(&#x27;plus&#x27;)+&#x27; Add chore&#x27;,&#x27;add-chore&#x27;,true));
+if(editor===&#x27;chore&#x27;)html+=choreForm();
+if(editor?.kind===&#x27;tools&#x27;)html+=toolsForm(chores.find(c=&gt;c.id===editor.id));
+html+=&#x27;&lt;div class=&quot;hc-chore-tabs&quot; role=&quot;group&quot; aria-label=&quot;Chore board view&quot;&gt;&lt;button type=&quot;button&quot; data-scope=&quot;all&quot; aria-pressed=&quot;&#x27;+(choreScope===&#x27;all&#x27;)+&#x27;&quot;&gt;All chores &lt;span&gt;&#x27;+chores.length+&#x27;&lt;/span&gt;&lt;/button&gt;&lt;button type=&quot;button&quot; data-scope=&quot;mine&quot; aria-pressed=&quot;&#x27;+(choreScope===&#x27;mine&#x27;)+&#x27;&quot;&gt;My tasks &lt;span&gt;&#x27;+chores.filter(c=&gt;c.person===activeUserId()).length+&#x27;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;&#x27;;
+html+=&#x27;&lt;div class=&quot;hc-banner&quot;&gt;&lt;div&gt;&lt;h2&gt;&#x27;+(choreScope===&#x27;mine&#x27;?&#x27;Your little part in a happier home&#x27;:&#x27;Every little bit makes a difference&#x27;)+&#x27;&lt;/h2&gt;&lt;p&gt;&#x27;+done+&#x27; of &#x27;+visibleChores.length+&#x27; chores complete &#x27;+(choreScope===&#x27;mine&#x27;?&#x27;on your personal board&#x27;:&#x27;on your shared board&#x27;)+&#x27;&lt;/p&gt;&lt;div class=&quot;hc-progress&quot; role=&quot;progressbar&quot; aria-label=&quot;Chores completed&quot; aria-valuenow=&quot;&#x27;+done+&#x27;&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;&#x27;+Math.max(1,visibleChores.length)+&#x27;&quot;&gt;&lt;span style=&quot;width:&#x27;+(visibleChores.length?done/visibleChores.length*100:0)+&#x27;%&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;hc-score&quot;&gt;&#x27;+done+&#x27; / &#x27;+visibleChores.length+&#x27;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;hc-section-title&quot;&gt;&lt;h2&gt;&#x27;+(choreScope===&#x27;mine&#x27;?&#x27;My tasks&#x27;:&#x27;Your shared chore board&#x27;)+&#x27;&lt;/h2&gt;&lt;span class=&quot;hc-label&quot;&gt;&#x27;+(visibleChores.length-done)+&#x27; to do&lt;/span&gt;&lt;/div&gt;&#x27;;
+if(!visibleChores.length)html+=&#x27;&lt;p class=&quot;hc-empty&quot;&gt;&#x27;+(choreScope===&#x27;mine&#x27;?&#x27;No chores assigned to you yet. Assign yourself a chore from All chores, or add a new one.&#x27;:&#x27;No chores yet. Add a chore to start sharing the load.&#x27;)+&#x27;&lt;/p&gt;&#x27;;
+html+=&#x27;&lt;div class=&quot;hc-grid&quot;&gt;&#x27;;
+html+=visibleChores.map(c=&gt;{const r=rooms.find(r=&gt;r.id===c.room),p=people.find(p=&gt;p.id===c.person);return &#x27;&lt;article class=&quot;hc-task &#x27;+(c.done?&#x27;hc-done&#x27;:&#x27;&#x27;)+&#x27;&quot;&gt;&lt;div class=&quot;hc-task-top&quot;&gt;&lt;span class=&quot;hc-room-icon&quot;&gt;&#x27;+icon(icons[r?.type]||&#x27;house&#x27;)+&#x27;&lt;/span&gt;&#x27;+repeatControl(c)+&#x27;&lt;/div&gt;&lt;h2&gt;&#x27;+esc(c.name)+&#x27;&lt;/h2&gt;&lt;p&gt;&#x27;+esc(r?.name||&#x27;Choose a room&#x27;)+&#x27; · &#x27;+esc(c.time)+&#x27;&lt;/p&gt;&lt;div class=&quot;hc-tools&quot;&gt;&lt;div class=&quot;hc-tools-head&quot;&gt;&lt;span&gt;Tools &amp; supplies&lt;/span&gt;&lt;button class=&quot;hc-edit-tools&quot; data-edit-tools=&quot;&#x27;+c.id+&#x27;&quot; aria-label=&quot;Edit tools for &#x27;+esc(c.name)+&#x27;&quot;&gt;Edit&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;hc-tool-list&quot;&gt;&#x27;+(c.tools.length?c.tools.map(t=&gt;&#x27;&lt;span class=&quot;hc-tool-pill&quot;&gt;&#x27;+esc(t)+&#x27;&lt;/span&gt;&#x27;).join(&#x27;&#x27;):&#x27;&lt;span class=&quot;hc-label&quot;&gt;No tools needed&lt;/span&gt;&#x27;)+&#x27;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;hc-task-bottom&quot;&gt;&lt;div class=&quot;hc-assignee&quot;&gt;&lt;span class=&quot;hc-avatar&quot; data-avatar=&quot;&#x27;+c.id+&#x27;&quot;&gt;&#x27;+esc(p?.name[0]||&#x27;?&#x27;)+&#x27;&lt;/span&gt;&lt;select data-assign=&quot;&#x27;+c.id+&#x27;&quot; aria-label=&quot;Assign &#x27;+esc(c.name)+&#x27;&quot;&gt;&lt;option value=&quot;0&quot;&gt;Unassigned&lt;/option&gt;&#x27;+options(people,c.person)+&#x27;&lt;/select&gt;&lt;/div&gt;&lt;button class=&quot;hc-check&quot; data-complete=&quot;&#x27;+c.id+&#x27;&quot; aria-label=&quot;&#x27;+(c.done?&#x27;Reopen &#x27;:&#x27;Complete &#x27;)+esc(c.name)+&#x27;&quot; aria-pressed=&quot;&#x27;+c.done+&#x27;&quot;&gt;&#x27;+icon(&#x27;check&#x27;)+&#x27;&lt;/button&gt;&lt;/div&gt;&lt;/article&gt;&#x27;}).join(&#x27;&#x27;);
+html+=&#x27;&lt;/div&gt;&#x27;;
+}else if(view===&#x27;planning&#x27;){
+html=planningView();
+}else if(view===&#x27;people&#x27;){
+html=head(peopleScope===&#x27;all&#x27;?&#x27;Everyone, across every space.&#x27;:&#x27;Everyone has a place.&#x27;,peopleScope===&#x27;all&#x27;?&#x27;Manage tenants and family memberships from one directory.&#x27;:&#x27;Manage the people who make this shared space a home.&#x27;,button(icon(&#x27;plus&#x27;)+(peopleScope===&#x27;all&#x27;?&#x27; Add person&#x27;:&#x27; Add person&#x27;),peopleScope===&#x27;all&#x27;?&#x27;add-all-person&#x27;:&#x27;add-person&#x27;,true));
+html+=&#x27;&lt;div class=&quot;hc-chore-tabs&quot; role=&quot;group&quot; aria-label=&quot;People directory view&quot;&gt;&lt;button type=&quot;button&quot; data-people-scope=&quot;current&quot; aria-pressed=&quot;&#x27;+(peopleScope===&#x27;current&#x27;)+&#x27;&quot;&gt;&#x27;+esc(currentHouse().name)+&#x27;&lt;/button&gt;&lt;button type=&quot;button&quot; data-people-scope=&quot;all&quot; aria-pressed=&quot;&#x27;+(peopleScope===&#x27;all&#x27;)+&#x27;&quot;&gt;All people &lt;span&gt;&#x27;+allMembers().length+&#x27;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;&#x27;;
+if(editor?.kind===&#x27;person&#x27;)html+=personForm();
+if(editor?.kind===&#x27;all-person&#x27;)html+=globalPersonForm();
+if(peopleScope===&#x27;current&#x27;){
+html+=&#x27;&lt;div class=&quot;hc-grid&quot;&gt;&#x27;+people.map(p=&gt;{const assigned=chores.filter(c=&gt;c.person===p.id),isResponsible=currentHouse().responsibleId===p.id;return &#x27;&lt;article class=&quot;hc-member&quot;&gt;&lt;div class=&quot;hc-member-head&quot;&gt;&lt;span class=&quot;hc-avatar&quot;&gt;&#x27;+esc(p.name[0])+&#x27;&lt;/span&gt;&lt;div&gt;&lt;h2&gt;&#x27;+esc(p.name)+&#x27;&lt;/h2&gt;&lt;p class=&quot;hc-label&quot;&gt;&#x27;+esc(p.role)+&#x27;&lt;/p&gt;&#x27;+(isResponsible?&#x27;&lt;span class=&quot;hc-owner-badge&quot;&gt;&#x27;+icon(&#x27;shield-check&#x27;)+&#x27; Home responsible&lt;/span&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;hc-member-footer&quot;&gt;&lt;span class=&quot;hc-label&quot;&gt;&#x27;+assigned.filter(c=&gt;!c.done).length+&#x27; chores to do · &#x27;+assigned.filter(c=&gt;c.done).length+&#x27; done&lt;/span&gt;&lt;button class=&quot;hc-quiet&quot; data-edit-person=&quot;&#x27;+p.id+&#x27;&quot; aria-label=&quot;Edit &#x27;+esc(p.name)+&#x27;&quot;&gt;&#x27;+icon(&#x27;pencil&#x27;)+&#x27;&lt;/button&gt;&lt;/div&gt;&lt;/article&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;;
+if(!people.length)html+=&#x27;&lt;p class=&quot;hc-empty&quot;&gt;Add a family member or roommate to start sharing chores.&lt;/p&gt;&#x27;;
+}else{
+const members=allMembers();html+=&#x27;&lt;div class=&quot;hc-grid&quot;&gt;&#x27;+members.map(member=&gt;{const assigned=member.memberships.reduce((sum,m)=&gt;sum+m.house.chores.filter(c=&gt;c.person===m.person.id&amp;&amp;!c.done).length,0);return &#x27;&lt;article class=&quot;hc-member&quot;&gt;&lt;div class=&quot;hc-member-head&quot;&gt;&lt;span class=&quot;hc-avatar&quot;&gt;&#x27;+esc(member.name[0])+&#x27;&lt;/span&gt;&lt;div&gt;&lt;h2&gt;&#x27;+esc(member.name)+&#x27;&lt;/h2&gt;&lt;p class=&quot;hc-label&quot;&gt;&#x27;+esc(member.role)+&#x27;&lt;/p&gt;&lt;div class=&quot;hc-member-spaces&quot;&gt;&#x27;+member.memberships.map(m=&gt;&#x27;&lt;span&gt;&#x27;+esc(m.house.name)+(m.house.responsibleId===m.person.id?&#x27; · Responsible&#x27;:&#x27;&#x27;)+&#x27;&lt;/span&gt;&#x27;).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;hc-member-footer&quot;&gt;&lt;span class=&quot;hc-label&quot;&gt;&#x27;+assigned+&#x27; chores to do · &#x27;+member.memberships.length+&#x27; space&#x27;+(member.memberships.length===1?&#x27;&#x27;:&#x27;s&#x27;)+&#x27;&lt;/span&gt;&lt;button class=&quot;hc-quiet&quot; data-manage-person=&quot;&#x27;+esc(encodeURIComponent(member.key))+&#x27;&quot; aria-label=&quot;Manage &#x27;+esc(member.name)+&#x27;&quot;&gt;&#x27;+icon(&#x27;settings-2&#x27;)+&#x27;&lt;/button&gt;&lt;/div&gt;&lt;/article&gt;&#x27;}).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;;if(!members.length)html+=&#x27;&lt;p class=&quot;hc-empty&quot;&gt;Add a person and choose which shared spaces they belong to.&lt;/p&gt;&#x27;;
+}
+}else{
+html=head(&#x27;A place for every chore.&#x27;,&#x27;Organize your home by floor and room.&#x27;,button(icon(&#x27;settings-2&#x27;)+&#x27; Set up home&#x27;,&#x27;setup&#x27;,true));
+const responsible=responsibleFor(currentHouse());html+=&#x27;&lt;section class=&quot;hc-responsible&quot; aria-label=&quot;Home responsible&quot;&gt;&lt;div class=&quot;hc-responsible-info&quot;&gt;&lt;span&gt;&#x27;+icon(&#x27;shield-check&#x27;)+&#x27;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;&#x27;+esc(responsible?.name||&#x27;No responsible person&#x27;)+&#x27;&lt;/strong&gt;&lt;small&gt;Responsible for &#x27;+esc(currentHouse().name)+&#x27;&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;&lt;label&gt;Change responsible&lt;select data-house-owner aria-label=&quot;Responsible person for &#x27;+esc(currentHouse().name)+&#x27;&quot;&gt;&#x27;+options(people,responsible?.id||0)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;/section&gt;&#x27;;
+if(editor===&#x27;setup&#x27;)html+=setupForm();
+else if(editor===&#x27;rooms&#x27;)html+=roomsForm();
+else for(let f=1;f&lt;=floors;f++){html+=&#x27;&lt;section class=&quot;hc-floor&quot;&gt;&lt;h2&gt;&#x27;+floorName(f)+&#x27;&lt;/h2&gt;&lt;div class=&quot;hc-grid&quot;&gt;&#x27;+rooms.filter(r=&gt;r.floor===f).map(r=&gt;&#x27;&lt;div class=&quot;hc-room&quot;&gt;&lt;span class=&quot;hc-room-icon&quot;&gt;&#x27;+icon(icons[r.type])+&#x27;&lt;/span&gt;&lt;div&gt;&lt;h2&gt;&#x27;+esc(r.name)+&#x27;&lt;/h2&gt;&lt;p&gt;&#x27;+esc(r.type)+&#x27; · &#x27;+chores.filter(c=&gt;c.room===r.id&amp;&amp;!c.done).length+&#x27; chores to do&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&#x27;).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&lt;/section&gt;&#x27;}
+}
+content.innerHTML=html;renderNotifications();if(globalThis.lucide)lucide.createIcons({attrs:{width:18,height:18}});
+}
+function floorName(f){return f===1?&#x27;Ground floor&#x27;:&#x27;Floor &#x27;+f}
+function planningView(){
+let html=head(&#x27;A little plan. A lighter week.&#x27;,&#x27;See what’s coming up and what got done, day by day.&#x27;,button(icon(&#x27;calendar-plus&#x27;)+&#x27; Schedule chore&#x27;,&#x27;schedule&#x27;,true));
+if(editor===&#x27;schedule&#x27;)html+=scheduleForm();
+html+=&#x27;&lt;div class=&quot;hc-week-toolbar&quot;&gt;&lt;div&gt;&lt;h2&gt;&#x27;+shortDate(planningWeek)+&#x27; – &#x27;+shortDate(addDays(planningWeek,6))+&#x27;, &#x27;+parseDate(addDays(planningWeek,6)).getFullYear()+&#x27;&lt;/h2&gt;&lt;span class=&quot;hc-label&quot;&gt;Monday to Sunday&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;hc-week-actions&quot;&gt;&lt;button class=&quot;hc-button&quot; data-week=&quot;-1&quot; aria-label=&quot;Previous week&quot;&gt;&#x27;+icon(&#x27;chevron-left&#x27;)+&#x27;&lt;span&gt;Previous&lt;/span&gt;&lt;/button&gt;&lt;button class=&quot;hc-button&quot; data-week=&quot;today&quot;&gt;This week&lt;/button&gt;&lt;button class=&quot;hc-button&quot; data-week=&quot;1&quot; aria-label=&quot;Next week&quot;&gt;&lt;span&gt;Next&lt;/span&gt;&#x27;+icon(&#x27;chevron-right&#x27;)+&#x27;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&#x27;;
+html+=&#x27;&lt;div class=&quot;hc-chore-tabs&quot; role=&quot;group&quot; aria-label=&quot;Planning view&quot;&gt;&lt;button data-planning-mode=&quot;scheduled&quot; aria-pressed=&quot;&#x27;+(planningMode===&#x27;scheduled&#x27;)+&#x27;&quot;&gt;Scheduled&lt;/button&gt;&lt;button data-planning-mode=&quot;completed&quot; aria-pressed=&quot;&#x27;+(planningMode===&#x27;completed&#x27;)+&#x27;&quot;&gt;Completed&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;hc-week-grid&quot;&gt;&#x27;;
+for(let i=0;i&lt;7;i++){const day=addDays(planningWeek,i),items=chores.filter(c=&gt;planningMode===&#x27;scheduled&#x27;?c.scheduled===day:c.done&amp;&amp;c.doneOn===day);
+html+=&#x27;&lt;section class=&quot;hc-day&quot; data-day=&quot;&#x27;+day+&#x27;&quot;&gt;&lt;div class=&quot;hc-day-heading&quot;&gt;&lt;h2&gt;&#x27;+parseDate(day).toLocaleDateString(&#x27;en-US&#x27;,{weekday:&#x27;long&#x27;})+&#x27;&lt;/h2&gt;&lt;span class=&quot;hc-label&quot;&gt;&#x27;+shortDate(day)+(day===today?&#x27; · Today&#x27;:&#x27;&#x27;)+&#x27;&lt;/span&gt;&lt;/div&gt;&#x27;;
+html+=items.length?items.map(c=&gt;{const r=rooms.find(r=&gt;r.id===c.room),p=people.find(p=&gt;p.id===c.person);return &#x27;&lt;article class=&quot;hc-plan-task&quot;&gt;&lt;h3&gt;&#x27;+esc(c.name)+&#x27;&lt;/h3&gt;&lt;p&gt;&#x27;+esc(r?.name||&#x27;No room&#x27;)+&#x27; · &#x27;+esc(c.time)+&#x27;&lt;/p&gt;&lt;div class=&quot;hc-plan-person&quot;&gt;&lt;span class=&quot;hc-avatar&quot;&gt;&#x27;+esc((planningMode===&#x27;completed&#x27;?c.doneBy:p?.name)?.[0]||&#x27;?&#x27;)+&#x27;&lt;/span&gt;&lt;span&gt;&#x27;+esc(planningMode===&#x27;completed&#x27;?c.doneBy||&#x27;Household member&#x27;:p?.name||&#x27;Unassigned&#x27;)+&#x27;&lt;/span&gt;&lt;button class=&quot;hc-check&quot; data-complete=&quot;&#x27;+c.id+&#x27;&quot; aria-label=&quot;&#x27;+(c.done?&#x27;Reopen &#x27;:&#x27;Complete &#x27;)+esc(c.name)+&#x27;&quot; aria-pressed=&quot;&#x27;+c.done+&#x27;&quot;&gt;&#x27;+icon(&#x27;check&#x27;)+&#x27;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;hc-plan-status&quot;&gt;&#x27;+(c.done?&#x27;Completed &#x27;+shortDate(c.doneOn):&#x27;To do&#x27;)+&#x27;&lt;/div&gt;&#x27;+repeatControl(c)+(planningMode===&#x27;scheduled&#x27;?&#x27;&lt;label class=&quot;hc-plan-date&quot;&gt;Scheduled for&lt;input type=&quot;date&quot; value=&quot;&#x27;+c.scheduled+&#x27;&quot; data-schedule=&quot;&#x27;+c.id+&#x27;&quot; aria-label=&quot;Schedule &#x27;+esc(c.name)+&#x27;&quot;&gt;&lt;/label&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/article&gt;&#x27;}).join(&#x27;&#x27;):&#x27;&lt;p class=&quot;hc-day-empty&quot;&gt;&#x27;+(planningMode===&#x27;scheduled&#x27;?&#x27;Nothing scheduled&#x27;:&#x27;No completed chores&#x27;)+&#x27;&lt;/p&gt;&#x27;;
+html+=&#x27;&lt;/section&gt;&#x27;}
+return html+&#x27;&lt;/div&gt;&#x27;;
+}
+function scheduleForm(){return &#x27;&lt;form class=&quot;hc-form&quot; id=&quot;hc-schedule-form&quot;&gt;&lt;div class=&quot;hc-form-head&quot;&gt;&lt;h2&gt;Choose a chore and a day&lt;/h2&gt;&#x27;+button(&#x27;Cancel&#x27;,&#x27;cancel&#x27;)+&#x27;&lt;/div&gt;&lt;div class=&quot;hc-fields&quot;&gt;&lt;label&gt;Chore&lt;select name=&quot;chore&quot; required&gt;&#x27;+options(chores,chores[0]?.id)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;label&gt;Scheduled for&lt;input type=&quot;date&quot; name=&quot;scheduled&quot; value=&quot;&#x27;+today+&#x27;&quot; required&gt;&lt;/label&gt;&lt;/div&gt;&lt;div class=&quot;hc-actions&quot;&gt;&lt;button class=&quot;hc-button hc-primary&quot; &#x27;+(!chores.length?&#x27;disabled&#x27;:&#x27;&#x27;)+&#x27;&gt;Save schedule&lt;/button&gt;&lt;/div&gt;&lt;/form&gt;&#x27;}
+function toolFields(selected=[]){return &#x27;&lt;fieldset class=&quot;hc-tool-fields&quot;&gt;&lt;legend&gt;Tools &amp; supplies&lt;/legend&gt;&lt;div class=&quot;hc-tool-options&quot;&gt;&#x27;+commonTools.map(t=&gt;&#x27;&lt;label class=&quot;hc-tool-option&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;tools&quot; value=&quot;&#x27;+esc(t)+&#x27;&quot; &#x27;+(selected.includes(t)?&#x27;checked&#x27;:&#x27;&#x27;)+&#x27;&gt;&#x27;+esc(t)+&#x27;&lt;/label&gt;&#x27;).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&lt;label&gt;Other items (separate with commas)&lt;input name=&quot;extra-tools&quot; maxlength=&quot;240&quot; value=&quot;&#x27;+esc(selected.filter(t=&gt;!commonTools.includes(t)).join(&#x27;, &#x27;))+&#x27;&quot; placeholder=&quot;e.g. Watering can, duster&quot;&gt;&lt;/label&gt;&lt;/fieldset&gt;&#x27;}
+function readTools(data){const all=[...data.getAll(&#x27;tools&#x27;),...String(data.get(&#x27;extra-tools&#x27;)||&#x27;&#x27;).split(&#x27;,&#x27;)].map(t=&gt;t.trim()).filter(Boolean);return all.filter((t,i)=&gt;all.findIndex(x=&gt;x.toLowerCase()===t.toLowerCase())===i)}
+function toolsForm(c){return &#x27;&lt;form class=&quot;hc-form&quot; id=&quot;hc-tools-form&quot;&gt;&lt;div class=&quot;hc-form-head&quot;&gt;&lt;h2&gt;Tools for &#x27;+esc(c.name)+&#x27;&lt;/h2&gt;&#x27;+button(&#x27;Cancel&#x27;,&#x27;cancel&#x27;)+&#x27;&lt;/div&gt;&#x27;+toolFields(c.tools)+&#x27;&lt;div class=&quot;hc-actions&quot;&gt;&lt;button class=&quot;hc-button hc-primary&quot;&gt;Save tools&lt;/button&gt;&lt;/div&gt;&lt;/form&gt;&#x27;}
+function choreForm(){return &#x27;&lt;form class=&quot;hc-form&quot; id=&quot;hc-chore-form&quot;&gt;&lt;div class=&quot;hc-form-head&quot;&gt;&lt;h2&gt;A new chore&lt;/h2&gt;&#x27;+button(&#x27;Cancel&#x27;,&#x27;cancel&#x27;)+&#x27;&lt;/div&gt;&lt;div class=&quot;hc-fields&quot;&gt;&lt;label&gt;Chore name&lt;input name=&quot;name&quot; required maxlength=&quot;80&quot; placeholder=&quot;e.g. Mop the kitchen floor&quot;&gt;&lt;/label&gt;&lt;label&gt;Room / place&lt;select name=&quot;room&quot; required&gt;&#x27;+options(rooms,rooms[0]?.id)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;label&gt;Assign to&lt;select name=&quot;person&quot;&gt;&lt;option value=&quot;0&quot;&gt;Unassigned&lt;/option&gt;&#x27;+options(people,choreScope===&#x27;mine&#x27;?activeUserId():0)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;label&gt;Repeats&lt;select name=&quot;frequency&quot;&gt;&#x27;+options([&#x27;Daily&#x27;,&#x27;Weekly&#x27;,&#x27;Monthly&#x27;,&#x27;One-off&#x27;],&#x27;Weekly&#x27;)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;label&gt;Estimated time&lt;select name=&quot;time&quot;&gt;&#x27;+options([&#x27;5 min&#x27;,&#x27;10 min&#x27;,&#x27;15 min&#x27;,&#x27;20 min&#x27;,&#x27;30 min&#x27;,&#x27;45 min&#x27;,&#x27;60 min&#x27;],&#x27;15 min&#x27;)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;label&gt;Scheduled for&lt;input type=&quot;date&quot; name=&quot;scheduled&quot; value=&quot;&#x27;+today+&#x27;&quot; required&gt;&lt;/label&gt;&lt;/div&gt;&#x27;+toolFields()+&#x27;&lt;div class=&quot;hc-actions&quot;&gt;&lt;button class=&quot;hc-button hc-primary&quot; &#x27;+(!rooms.length?&#x27;disabled&#x27;:&#x27;&#x27;)+&#x27;&gt;Create chore&lt;/button&gt;&lt;/div&gt;&lt;/form&gt;&#x27;}
+function personForm(){const p=people.find(p=&gt;p.id===editor.id);return &#x27;&lt;form class=&quot;hc-form&quot; id=&quot;hc-person-form&quot;&gt;&lt;div class=&quot;hc-form-head&quot;&gt;&lt;h2&gt;&#x27;+(p?&#x27;Edit person&#x27;:&#x27;Add someone to your home&#x27;)+&#x27;&lt;/h2&gt;&#x27;+button(&#x27;Cancel&#x27;,&#x27;cancel&#x27;)+&#x27;&lt;/div&gt;&lt;div class=&quot;hc-fields&quot;&gt;&lt;label&gt;Name&lt;input name=&quot;name&quot; required maxlength=&quot;35&quot; value=&quot;&#x27;+esc(p?.name||&#x27;&#x27;)+&#x27;&quot; placeholder=&quot;e.g. Taylor&quot;&gt;&lt;/label&gt;&lt;label&gt;Relationship&lt;select name=&quot;role&quot;&gt;&#x27;+options([&#x27;Family member&#x27;,&#x27;Roommate&#x27;],p?.role||&#x27;Roommate&#x27;)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;/div&gt;&lt;div class=&quot;hc-actions&quot;&gt;&#x27;+(p?button(&#x27;Remove person&#x27;,&#x27;remove-person&#x27;):&#x27;&#x27;)+&#x27;&lt;button class=&quot;hc-button hc-primary&quot;&gt;&#x27;+(p?&#x27;Save changes&#x27;:&#x27;Add person&#x27;)+&#x27;&lt;/button&gt;&lt;/div&gt;&#x27;+(p?&#x27;&lt;p class=&quot;hc-note&quot;&gt;Removing a person leaves their chores unassigned.&lt;/p&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/form&gt;&#x27;}
+function globalPersonForm(){const member=editor.key?allMembers().find(m=&gt;m.key===editor.key):null,memberHouseIds=member?member.memberships.map(m=&gt;m.house.id):[currentHouseId];return &#x27;&lt;form class=&quot;hc-form&quot; id=&quot;hc-global-person-form&quot;&gt;&lt;div class=&quot;hc-form-head&quot;&gt;&lt;h2&gt;&#x27;+(member?&#x27;Manage &#x27;+esc(member.name):&#x27;Add a person&#x27;)+&#x27;&lt;/h2&gt;&#x27;+button(&#x27;Cancel&#x27;,&#x27;cancel&#x27;)+&#x27;&lt;/div&gt;&lt;div class=&quot;hc-fields&quot;&gt;&lt;label&gt;Name&lt;input name=&quot;name&quot; required maxlength=&quot;35&quot; value=&quot;&#x27;+esc(member?.name||&#x27;&#x27;)+&#x27;&quot; placeholder=&quot;e.g. Taylor&quot;&gt;&lt;/label&gt;&lt;label&gt;Relationship&lt;select name=&quot;role&quot;&gt;&#x27;+options([&#x27;Family member&#x27;,&#x27;Roommate&#x27;],member?.role||&#x27;Roommate&#x27;)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;/div&gt;&lt;fieldset class=&quot;hc-membership-list&quot;&gt;&lt;legend&gt;Shared-space membership&lt;/legend&gt;&lt;div class=&quot;hc-membership-options&quot;&gt;&#x27;+houses.map(h=&gt;&#x27;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;houses&quot; value=&quot;&#x27;+h.id+&#x27;&quot; &#x27;+(memberHouseIds.includes(h.id)?&#x27;checked&#x27;:&#x27;&#x27;)+&#x27;&gt;&#x27;+esc(h.name)+&#x27;&lt;/label&gt;&#x27;).join(&#x27;&#x27;)+&#x27;&lt;/div&gt;&lt;/fieldset&gt;&lt;div class=&quot;hc-actions&quot;&gt;&#x27;+(member?button(&#x27;Remove from all spaces&#x27;,&#x27;remove-all-person&#x27;):&#x27;&#x27;)+&#x27;&lt;button class=&quot;hc-button hc-primary&quot;&gt;&#x27;+(member?&#x27;Save memberships&#x27;:&#x27;Add person&#x27;)+&#x27;&lt;/button&gt;&lt;/div&gt;&#x27;+(member?&#x27;&lt;p class=&quot;hc-note&quot;&gt;Removing a membership leaves that person’s chores unassigned in the affected space.&lt;/p&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;/form&gt;&#x27;}
+function setupForm(){return &#x27;&lt;form class=&quot;hc-form&quot; id=&quot;hc-setup-form&quot;&gt;&lt;div class=&quot;hc-step&quot;&gt;01 — Your home&lt;/div&gt;&lt;div class=&quot;hc-form-head&quot;&gt;&lt;h2&gt;How much space do you share?&lt;/h2&gt;&#x27;+button(&#x27;Cancel&#x27;,&#x27;cancel&#x27;)+&#x27;&lt;/div&gt;&lt;div class=&quot;hc-fields&quot;&gt;&lt;label&gt;Number of floors&lt;input type=&quot;number&quot; name=&quot;floors&quot; min=&quot;1&quot; max=&quot;6&quot; required value=&quot;&#x27;+floors+&#x27;&quot;&gt;&lt;/label&gt;&lt;label&gt;Total rooms / places&lt;input type=&quot;number&quot; name=&quot;rooms&quot; min=&quot;1&quot; max=&quot;24&quot; required value=&quot;&#x27;+rooms.length+&#x27;&quot;&gt;&lt;/label&gt;&lt;/div&gt;&lt;p class=&quot;hc-note&quot;&gt;Include shared spaces such as a garden, balcony, or laundry room.&lt;/p&gt;&lt;div class=&quot;hc-actions&quot;&gt;&lt;button class=&quot;hc-button hc-primary&quot;&gt;Next: name your rooms &#x27;+icon(&#x27;arrow-right&#x27;)+&#x27;&lt;/button&gt;&lt;/div&gt;&lt;/form&gt;&#x27;}
+function roomsForm(){return &#x27;&lt;form class=&quot;hc-form&quot; id=&quot;hc-rooms-form&quot;&gt;&lt;div class=&quot;hc-step&quot;&gt;02 — Rooms &amp; places&lt;/div&gt;&lt;div class=&quot;hc-form-head&quot;&gt;&lt;h2&gt;Give each space a home&lt;/h2&gt;&#x27;+button(&#x27;Cancel&#x27;,&#x27;cancel&#x27;)+&#x27;&lt;/div&gt;&#x27;+draft.map((r,i)=&gt;&#x27;&lt;div class=&quot;hc-room-row&quot;&gt;&lt;label&gt;Room &#x27;+(i+1)+&#x27; name&lt;input name=&quot;name-&#x27;+i+&#x27;&quot; required maxlength=&quot;45&quot; value=&quot;&#x27;+esc(r.name)+&#x27;&quot; placeholder=&quot;Room name&quot;&gt;&lt;/label&gt;&lt;label&gt;Room type&lt;select name=&quot;type-&#x27;+i+&#x27;&quot;&gt;&#x27;+options(types,r.type)+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;label&gt;Floor&lt;select name=&quot;floor-&#x27;+i+&#x27;&quot;&gt;&#x27;+options(Array.from({length:editorFloors},(_,i)=&gt;({id:i+1,name:floorName(i+1)})),Math.min(r.floor,editorFloors))+&#x27;&lt;/select&gt;&lt;/label&gt;&lt;/div&gt;&#x27;).join(&#x27;&#x27;)+&#x27;&lt;p class=&quot;hc-note&quot;&gt;Existing chore assignments are kept. Chores in removed rooms move to your first room.&lt;/p&gt;&lt;div class=&quot;hc-actions&quot;&gt;&#x27;+button(&#x27;Back&#x27;,&#x27;back-setup&#x27;)+&#x27;&lt;button class=&quot;hc-button hc-primary&quot;&gt;Save home&lt;/button&gt;&lt;/div&gt;&lt;/form&gt;&#x27;}
+let editorFloors=floors;
+root.addEventListener(&#x27;click&#x27;,e=&gt;{
+const userButton=e.target.closest(&#x27;#hc-user-button&#x27;);if(userButton){const menu=root.querySelector(&#x27;#hc-user-menu&#x27;),open=menu.hidden;menu.hidden=!open;userButton.setAttribute(&#x27;aria-expanded&#x27;,String(open));return}
+const userAction=e.target.closest(&#x27;[data-user-action]&#x27;);if(userAction){root.querySelector(&#x27;#hc-user-menu&#x27;).hidden=true;root.querySelector(&#x27;#hc-user-button&#x27;).setAttribute(&#x27;aria-expanded&#x27;,&#x27;false&#x27;);if(userAction.dataset.userAction===&#x27;notifications&#x27;){const panel=root.querySelector(&#x27;#hc-notifications&#x27;);panel.hidden=false;root.querySelector(&#x27;#hc-notification-button&#x27;).setAttribute(&#x27;aria-expanded&#x27;,&#x27;true&#x27;);const details=panel.querySelector(&#x27;details&#x27;);if(details)details.open=true;return}view=&#x27;people&#x27;;peopleScope=&#x27;all&#x27;;editor=userAction.dataset.userAction===&#x27;profile&#x27;?{kind:&#x27;all-person&#x27;,key:&#x27;jamie&#x27;}:null;feedback(&#x27;&#x27;);render();return}
+const houseSwitcher=e.target.closest(&#x27;#hc-house-switcher&#x27;);if(houseSwitcher){const menu=root.querySelector(&#x27;#hc-house-menu&#x27;),open=menu.hidden;menu.hidden=!open;houseSwitcher.setAttribute(&#x27;aria-expanded&#x27;,String(open));return}
+const houseOption=e.target.closest(&#x27;[data-house-id]&#x27;);if(houseOption){switchHouse(+houseOption.dataset.houseId);return}
+const spaceAction=e.target.closest(&#x27;[data-space-action]&#x27;);if(spaceAction){houseCreator=spaceAction.dataset.spaceAction===&#x27;create&#x27;;renderHouseMenu();if(globalThis.lucide)lucide.createIcons({attrs:{width:18,height:18}});return}
+const notificationButton=e.target.closest(&#x27;#hc-notification-button&#x27;);if(notificationButton){const panel=root.querySelector(&#x27;#hc-notifications&#x27;),open=panel.hidden;panel.hidden=!open;notificationButton.setAttribute(&#x27;aria-expanded&#x27;,String(open));return}
+const notification=e.target.closest(&#x27;[data-notification-id]&#x27;);if(notification){const item=notifications.find(n=&gt;n.id===+notification.dataset.notificationId);item.read=true;renderNotifications();return}
+const notificationAction=e.target.closest(&#x27;[data-notification-action]&#x27;);if(notificationAction){notifications.forEach(n=&gt;n.read=true);renderNotifications();feedback(&#x27;All notifications marked as read.&#x27;);return}
+const week=e.target.closest(&#x27;[data-week]&#x27;);if(week){planningWeek=week.dataset.week===&#x27;today&#x27;?weekStart(today):addDays(planningWeek,+week.dataset.week*7);editor=null;feedback(&#x27;&#x27;);render();return}
+const peopleScopeButton=e.target.closest(&#x27;[data-people-scope]&#x27;);if(peopleScopeButton){peopleScope=peopleScopeButton.dataset.peopleScope;editor=null;feedback(&#x27;&#x27;);render();root.querySelector(&#x27;[data-people-scope=&quot;&#x27;+peopleScope+&#x27;&quot;]&#x27;).focus();return}
+const mode=e.target.closest(&#x27;[data-planning-mode]&#x27;);if(mode){planningMode=mode.dataset.planningMode;editor=null;feedback(&#x27;&#x27;);render();root.querySelector(&#x27;[data-planning-mode=&quot;&#x27;+planningMode+&#x27;&quot;]&#x27;).focus();return}
+const scope=e.target.closest(&#x27;[data-scope]&#x27;);if(scope){choreScope=scope.dataset.scope;editor=null;feedback(&#x27;&#x27;);render();root.querySelector(&#x27;[data-scope=&quot;&#x27;+choreScope+&#x27;&quot;]&#x27;).focus();return}
+const nav=e.target.closest(&#x27;[data-view]&#x27;);if(nav){view=nav.dataset.view;editor=null;feedback(&#x27;&#x27;);render();return}
+const completed=e.target.closest(&#x27;[data-complete]&#x27;);if(completed){const c=chores.find(c=&gt;c.id===+completed.dataset.complete);c.done=!c.done;c.doneOn=c.done?dateKey(new Date()):null;c.doneBy=c.done?(people.find(p=&gt;p.id===activeUserId())?.name||&#x27;Jamie&#x27;):null;addNotification(c.done?&#x27;Chore completed&#x27;:&#x27;Chore reopened&#x27;,c.name,c.done?&#x27;completions&#x27;:&#x27;reminders&#x27;);feedback(c.done?&#x27;Nice work! &#x27;+c.name+&#x27; is complete.&#x27;:c.name+&#x27; moved back to to do.&#x27;);render();return}
+const edit=e.target.closest(&#x27;[data-edit-person]&#x27;);if(edit){editor={kind:&#x27;person&#x27;,id:+edit.dataset.editPerson};render();return}
+const managePerson=e.target.closest(&#x27;[data-manage-person]&#x27;);if(managePerson){editor={kind:&#x27;all-person&#x27;,key:decodeURIComponent(managePerson.dataset.managePerson)};render();return}
+const editTools=e.target.closest(&#x27;[data-edit-tools]&#x27;);if(editTools){editor={kind:&#x27;tools&#x27;,id:+editTools.dataset.editTools};render();return}
+const action=e.target.closest(&#x27;[data-action]&#x27;);if(!action)return;e.preventDefault();
+switch(action.dataset.action){case &#x27;add-chore&#x27;:editor=&#x27;chore&#x27;;break;case &#x27;add-person&#x27;:editor={kind:&#x27;person&#x27;};break;case &#x27;add-all-person&#x27;:editor={kind:&#x27;all-person&#x27;,key:null};break;case &#x27;cancel&#x27;:editor=null;break;case &#x27;setup&#x27;:editor=&#x27;setup&#x27;;break;case &#x27;back-setup&#x27;:editor=&#x27;setup&#x27;;break;case &#x27;remove-person&#x27;:{const id=editor.id;people=people.filter(p=&gt;p.id!==id);chores.forEach(c=&gt;{if(c.person===id)c.person=0});if(currentHouse().responsibleId===id)currentHouse().responsibleId=people[0]?.id||null;editor=null;feedback(&#x27;Person removed. Their chores are now unassigned.&#x27;);break}case &#x27;remove-all-person&#x27;:{const key=editor.key;houses.forEach(h=&gt;{const removed=h.people.find(p=&gt;p.name.trim().toLowerCase()===key);if(removed){h.people=h.people.filter(p=&gt;p.id!==removed.id);h.chores.forEach(c=&gt;{if(c.person===removed.id)c.person=0});if(h.responsibleId===removed.id)h.responsibleId=h.people[0]?.id||null}});const active=currentHouse();people=active.people;editor=null;feedback(&#x27;Person removed from every shared space.&#x27;);break}}
+if(action.dataset.action===&#x27;schedule&#x27;){editor=&#x27;schedule&#x27;;planningMode=&#x27;scheduled&#x27;}
+render();
+});
+root.addEventListener(&#x27;change&#x27;,e=&gt;{if(e.target.matches(&#x27;[data-notification-pref]&#x27;)){notificationPrefs[e.target.dataset.notificationPref]=e.target.checked;feedback(e.target.checked?&#x27;Notification enabled.&#x27;:&#x27;Notification muted.&#x27;);return}if(e.target.matches(&#x27;[data-house-owner]&#x27;)){const h=currentHouse(),p=people.find(p=&gt;p.id===+e.target.value);h.responsibleId=p?.id||null;addNotification(&#x27;Home responsible updated&#x27;,h.name+&#x27; · &#x27;+(p?.name||&#x27;Not assigned&#x27;),&#x27;assignments&#x27;);feedback((p?.name||&#x27;No one&#x27;)+&#x27; is now responsible for &#x27;+h.name+&#x27;.&#x27;);render();return}if(e.target.matches(&#x27;[data-assign]&#x27;)){const c=chores.find(c=&gt;c.id===+e.target.dataset.assign);c.person=+e.target.value;const p=people.find(p=&gt;p.id===c.person);addNotification(&#x27;Assignment updated&#x27;,c.name+&#x27; · &#x27;+(p?.name||&#x27;Unassigned&#x27;),&#x27;assignments&#x27;);feedback(c.name+&#x27; assigned to &#x27;+(p?.name||&#x27;no one&#x27;)+&#x27;.&#x27;);render()}});
+root.addEventListener(&#x27;change&#x27;,e=&gt;{if(e.target.matches(&#x27;[data-repeat]&#x27;)){const c=chores.find(c=&gt;c.id===+e.target.dataset.repeat);c.frequency=e.target.value;addNotification(&#x27;Recurrence updated&#x27;,c.name+&#x27; · &#x27;+c.frequency,&#x27;reminders&#x27;);feedback(c.name+&#x27; now repeats &#x27;+(c.frequency===&#x27;One-off&#x27;?&#x27;once&#x27;:c.frequency.toLowerCase())+&#x27;.&#x27;);render()}});
+root.addEventListener(&#x27;change&#x27;,e=&gt;{if(e.target.matches(&#x27;[data-schedule]&#x27;)){const c=chores.find(c=&gt;c.id===+e.target.dataset.schedule);if(!e.target.value){e.target.value=c.scheduled;feedback(&#x27;Choose a date to reschedule this chore.&#x27;);return}c.scheduled=e.target.value;addNotification(&#x27;Chore rescheduled&#x27;,c.name+&#x27; · &#x27;+shortDate(c.scheduled),&#x27;reminders&#x27;);feedback(c.name+&#x27; moved to &#x27;+shortDate(c.scheduled)+&#x27;.&#x27;);render()}});
+root.addEventListener(&#x27;submit&#x27;,e=&gt;{
+e.preventDefault();const data=new FormData(e.target);
+if(e.target.id===&#x27;hc-space-form&#x27;){const name=data.get(&#x27;name&#x27;).trim(),newFloors=+data.get(&#x27;floors&#x27;),roomCount=+data.get(&#x27;rooms&#x27;);if(!name){feedback(&#x27;Please name the shared space.&#x27;);return}saveCurrentHouse();const newRooms=Array.from({length:roomCount},(_,i)=&gt;({id:nextId++,name:&#x27;Room &#x27;+(i+1),type:&#x27;Other&#x27;,floor:(i%newFloors)+1})),creator={id:nextId++,name:&#x27;Jamie&#x27;,role:&#x27;Family member&#x27;};const space={id:nextId++,name,type:data.get(&#x27;type&#x27;),floors:newFloors,people:[creator],rooms:newRooms,chores:[],responsibleId:creator.id};houses.push(space);addNotification(&#x27;Shared space created&#x27;,name+&#x27; · &#x27;+space.type,&#x27;assignments&#x27;);switchHouse(space.id);return}
+if(e.target.id===&#x27;hc-schedule-form&#x27;){const c=chores.find(c=&gt;c.id===+data.get(&#x27;chore&#x27;));c.scheduled=data.get(&#x27;scheduled&#x27;);planningWeek=weekStart(c.scheduled);editor=null;feedback(c.name+&#x27; scheduled for &#x27;+shortDate(c.scheduled)+&#x27;.&#x27;)}
+if(e.target.id===&#x27;hc-chore-form&#x27;){const name=data.get(&#x27;name&#x27;).trim();if(!name){feedback(&#x27;Please enter a chore name.&#x27;);return}chores.push({id:nextId++,name,room:+data.get(&#x27;room&#x27;),person:+data.get(&#x27;person&#x27;),frequency:data.get(&#x27;frequency&#x27;),time:data.get(&#x27;time&#x27;),tools:readTools(data),scheduled:data.get(&#x27;scheduled&#x27;)||today,doneOn:null,doneBy:null,done:false});editor=null;feedback(&#x27;Chore added to your shared board.&#x27;)}
+if(e.target.id===&#x27;hc-tools-form&#x27;){const c=chores.find(c=&gt;c.id===editor.id);c.tools=readTools(data);editor=null;feedback(&#x27;Tools updated for &#x27;+c.name+&#x27;.&#x27;)}
+if(e.target.id===&#x27;hc-person-form&#x27;){const name=data.get(&#x27;name&#x27;).trim();if(!name){feedback(&#x27;Please enter a name.&#x27;);return}const p=people.find(p=&gt;p.id===editor.id);if(p){p.name=name;p.role=data.get(&#x27;role&#x27;)}else people.push({id:nextId++,name,role:data.get(&#x27;role&#x27;)});editor=null;feedback(&#x27;Your household has been updated.&#x27;)}
+if(e.target.id===&#x27;hc-global-person-form&#x27;){const name=data.get(&#x27;name&#x27;).trim(),selected=data.getAll(&#x27;houses&#x27;).map(Number),oldKey=editor.key;if(!name){feedback(&#x27;Please enter a name.&#x27;);return}if(!selected.length){feedback(&#x27;Choose at least one shared space.&#x27;);return}houses.forEach(h=&gt;{const existing=oldKey?h.people.find(p=&gt;p.name.trim().toLowerCase()===oldKey):null;if(selected.includes(h.id)){if(existing){existing.name=name;existing.role=data.get(&#x27;role&#x27;)}else h.people.push({id:nextId++,name,role:data.get(&#x27;role&#x27;)})}else if(existing){h.people=h.people.filter(p=&gt;p.id!==existing.id);h.chores.forEach(c=&gt;{if(c.person===existing.id)c.person=0});if(h.responsibleId===existing.id)h.responsibleId=h.people[0]?.id||null}});const active=currentHouse();people=active.people;editor=null;addNotification(&#x27;People directory updated&#x27;,name+&#x27; · &#x27;+selected.length+&#x27; shared space&#x27;+(selected.length===1?&#x27;&#x27;:&#x27;s&#x27;),&#x27;assignments&#x27;);feedback(&#x27;Memberships updated for &#x27;+name+&#x27;.&#x27;)}
+if(e.target.id===&#x27;hc-setup-form&#x27;){editorFloors=+data.get(&#x27;floors&#x27;);draft=Array.from({length:+data.get(&#x27;rooms&#x27;)},(_,i)=&gt;rooms[i]?{...rooms[i]}:{id:nextId++,name:&#x27;&#x27;,type:&#x27;Bedroom&#x27;,floor:1});editor=&#x27;rooms&#x27;;feedback(&#x27;&#x27;)}
+if(e.target.id===&#x27;hc-rooms-form&#x27;){if(draft.some((r,i)=&gt;!data.get(&#x27;name-&#x27;+i).trim())){feedback(&#x27;Please name every room.&#x27;);return}rooms=draft.map((r,i)=&gt;({...r,name:data.get(&#x27;name-&#x27;+i).trim(),type:data.get(&#x27;type-&#x27;+i),floor:+data.get(&#x27;floor-&#x27;+i)}));floors=editorFloors;chores.forEach(c=&gt;{if(!rooms.some(r=&gt;r.id===c.room))c.room=rooms[0].id});editor=null;feedback(&#x27;Your home is ready. Assign chores to any room.&#x27;)}
+render();
+});
+render();
+if(globalThis.Tweak){const design={rounded:14,compact:false};const tweak=new Tweak({container:root,onChange:()=&gt;{root.style.borderRadius=design.rounded+&#x27;px&#x27;;root.querySelector(&#x27;.hc-main&#x27;).style.padding=design.compact?&#x27;20px&#x27;:&#x27;28px 30px&#x27;}});tweak.addSlider(design,&#x27;rounded&#x27;,{label:&#x27;App corner radius&#x27;,min:0,max:28,unit:&#x27;px&#x27;});tweak.addToggle(design,&#x27;compact&#x27;,{label:&#x27;Compact spacing&#x27;})}
+})();
+&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+  let lastPointerWasTouch = false;
+  let pinnedByTouch = false;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    pinnedByTouch = false;
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handlePointer = (event) =&gt; {
+    lastPointerWasTouch =
+      event.type === &quot;pointerdown&quot; &amp;&amp; event.pointerType === &quot;touch&quot;;
+  };
+  const handleTouchClick = (event) =&gt; {
+    const isTouch = event.pointerType === &quot;touch&quot; || lastPointerWasTouch;
+    lastPointerWasTouch = false;
+    if (!isTouch || event.detail === 0) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (
+      trigger == null ||
+      !trigger.isConnected ||
+      getContent(trigger).length === 0 ||
+      (pinnedByTouch &amp;&amp; activeTrigger === trigger)
+    ) {
+      if (pinnedByTouch) {
+        closeTooltip();
+      }
+      return;
+    }
+    openTooltip(trigger);
+    pinnedByTouch = activeTrigger === trigger;
+    window.setTimeout(() =&gt; {
+      if (activeTrigger === trigger &amp;&amp; !trigger.isConnected) {
+        closeTooltip(false);
+      }
+    }, 0);
+  };
+  const handleLeave = (event) =&gt; {
+    if (pinnedByTouch) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    lastPointerWasTouch = false;
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    lastPointerWasTouch = false;
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerdown&quot;, handlePointer);
+    document.removeEventListener(&quot;pointercancel&quot;, handlePointer);
+    document.removeEventListener(&quot;click&quot;, handleTouchClick);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerdown&quot;, handlePointer);
+  document.addEventListener(&quot;pointercancel&quot;, handlePointer);
+  document.addEventListener(&quot;click&quot;, handleTouchClick);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-tabs&quot;&gt;
+(() =&gt; {
+  const selector = &#x27;.nav[role=&quot;tablist&quot;] [role=&quot;tab&quot;]&#x27;;
+  const disabled = &#x27;:disabled,[aria-disabled=&quot;true&quot;]&#x27;;
+  const selectTab = (selected) =&gt; {
+    const panelId = selected.getAttribute(&quot;aria-controls&quot;);
+    for (const tab of selected.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;)) {
+      const active = tab === selected;
+      tab.classList.toggle(&quot;active&quot;, active);
+      tab.setAttribute(&quot;aria-selected&quot;, String(active));
+      const id = tab.getAttribute(&quot;aria-controls&quot;);
+      const panel = id &amp;&amp; document.getElementById(id);
+      if (panel != null) {
+        panel.hidden = id !== panelId;
+        if (!panel.hidden &amp;&amp; selected.id) {
+          panel.setAttribute(&quot;aria-labelledby&quot;, selected.id);
+        }
+      }
+    }
+  };
+  const interact = (event) =&gt; {
+    const tab = event.target?.closest?.(selector);
+    if (event.defaultPrevented || tab == null || tab.matches(disabled)) {
+      return;
+    }
+    if (event.type === &quot;click&quot;) {
+      selectTab(tab);
+      return;
+    }
+    const tabs = Array.from(
+      tab.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;),
+    ).filter((candidate) =&gt; !candidate.matches(disabled));
+    const current = tabs.indexOf(tab);
+    let next;
+    if (event.key === &quot;ArrowRight&quot; || event.key === &quot;ArrowDown&quot;) {
+      next = (current + 1) % tabs.length;
+    } else if (event.key === &quot;ArrowLeft&quot; || event.key === &quot;ArrowUp&quot;) {
+      next = (current + tabs.length - 1) % tabs.length;
+    } else if (event.key === &quot;Home&quot;) {
+      next = 0;
+    } else if (event.key === &quot;End&quot;) {
+      next = tabs.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    tabs[next].focus();
+    selectTab(tabs[next]);
+  };
+
+  for (const list of document.querySelectorAll(&#x27;.nav[role=&quot;tablist&quot;]&#x27;)) {
+    const selected =
+      list.querySelector(&#x27;[role=&quot;tab&quot;][aria-selected=&quot;true&quot;]&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;].active&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;]&#x27;);
+    if (selected != null) {
+      selectTab(selected);
+    }
+  }
+  document.addEventListener(&quot;click&quot;, interact);
+  document.addEventListener(&quot;keydown&quot;, interact);
+  window.addEventListener(&quot;pagehide&quot;, () =&gt; {
+    document.removeEventListener(&quot;click&quot;, interact);
+    document.removeEventListener(&quot;keydown&quot;, interact);
+  }, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+<script>(() => {
+  const frame = document.getElementById("codex-visualization");
+  if (!(frame instanceof HTMLIFrameElement)) {
+    return;
+  }
+  let viewportHeight = globalThis.innerHeight;
+  const storageKey = `codex:visualization-widget-state-v2:${JSON.stringify([
+    globalThis.location.pathname,
+    globalThis.location.search,
+  ])}`;
+  const parseState = (serializedState) => {
+    if (
+      typeof serializedState !== "string" ||
+      new TextEncoder().encode(serializedState).length > 16 * 1024
+    ) {
+      throw new TypeError(
+        "Widget state must be a JSON object of at most 16 KiB",
+      );
+    }
+    /** @type {unknown} */
+    const state = JSON.parse(serializedState);
+    if (
+      state == null ||
+      typeof state !== "object" ||
+      Array.isArray(state) ||
+      ("imageIds" in state &&
+        (!Array.isArray(state.imageIds) || state.imageIds.length > 0))
+    ) {
+      throw new TypeError("Widget state must be a JSON object");
+    }
+    const storedState = { modelContent: null, privateContent: null, ...state };
+    const canonicalState = JSON.stringify(
+      storedState,
+      (_key, /** @type {unknown} */ value) => {
+        if (typeof value === "number" && !Number.isFinite(value)) {
+          throw new TypeError("Widget state must contain finite numbers");
+        }
+        return value;
+      },
+    );
+    if (new TextEncoder().encode(canonicalState).length > 16 * 1024) {
+      throw new TypeError(
+        "Widget state must be a JSON object of at most 16 KiB",
+      );
+    }
+    return storedState;
+  };
+  let storage = null;
+  let state = null;
+  try {
+    const localStorage = globalThis.localStorage;
+    const probeKey = `${storageKey}:probe`;
+    localStorage.setItem(probeKey, "1");
+    localStorage.removeItem(probeKey);
+    storage = localStorage;
+    const savedState = storage.getItem(storageKey);
+    if (savedState != null) {
+      try {
+        state = parseState(savedState);
+      } catch {
+        // Invalid saved state does not disable future writes.
+      }
+    }
+  } catch {
+    storage = null;
+  }
+  const initialGlobals = {
+    widgetState: state,
+    statePersistence: storage == null ? "none" : "local",
+  };
+
+  const channel = new MessageChannel();
+  channel.port1.addEventListener("message", (event) => {
+    const data = event.data;
+    if (typeof data !== "object" || data == null) {
+      return;
+    }
+    if (data.type === "widget-state-write") {
+      if (!Number.isSafeInteger(data.id) || data.id <= 0) {
+        return;
+      }
+      let ok = false;
+      try {
+        if (storage != null) {
+          const state = parseState(data.state);
+          storage.setItem(storageKey, JSON.stringify(state));
+          ok = true;
+        }
+      } catch {
+        // Storage denial, quota limits, and invalid state return a failed receipt.
+      }
+      channel.port1.postMessage({
+        type: "widget-state-result",
+        id: data.id,
+        ok,
+      });
+      return;
+    }
+    if (data.type === "height") {
+      const height = data.height;
+      if (
+        typeof height === "number" &&
+        Number.isFinite(height) &&
+        height >= 0 &&
+        height <= 10_000
+      ) {
+        frame.style.height = Math.ceil(height) + "px";
+      }
+      return;
+    }
+    if (data.type === "scroll-to") {
+      const top = data.top;
+      if (
+        typeof top === "number" &&
+        Number.isFinite(top) &&
+        top >= 0 &&
+        globalThis.navigator.userActivation?.isActive === true
+      ) {
+        globalThis.scrollTo({
+          top: Math.ceil(
+            globalThis.scrollY + frame.getBoundingClientRect().top + top,
+          ),
+        });
+      }
+      return;
+    }
+    if (data.type === "open-external") {
+      const rawHref = data.href;
+      if (typeof rawHref !== "string") {
+        return;
+      }
+      let href;
+      try {
+        const url = new URL(rawHref, document.baseURI);
+        if (url.protocol !== "https:") {
+          return;
+        }
+        href = url.href;
+      } catch {
+        return;
+      }
+      if (globalThis.navigator.userActivation?.isActive === true) {
+        const anchor = document.createElement("a");
+        anchor.href = href;
+        anchor.rel = "noopener noreferrer";
+        anchor.target = "_blank";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+      }
+      return;
+    }
+    if (data.type === "follow-up") {
+      const prompt = data.prompt;
+      if (
+        typeof prompt !== "string" ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      const title = data.title;
+      globalThis.prompt(typeof title === "string" ? title : prompt, prompt);
+    }
+  });
+  channel.port1.start();
+  const srcdoc = frame.dataset.srcdoc;
+  if (srcdoc == null) {
+    return;
+  }
+  globalThis.addEventListener("resize", () => {
+    const height = Number.parseFloat(frame.style.height);
+    if (!Number.isFinite(height) || height <= viewportHeight) {
+      frame.style.removeProperty("height");
+    }
+    viewportHeight = globalThis.innerHeight;
+    channel.port1.postMessage({ type: "measure" });
+  });
+  frame.addEventListener(
+    "load",
+    () => {
+      frame.contentWindow?.postMessage(
+        { type: "codex-visualization-initialize" },
+        "*",
+        [channel.port2],
+      );
+    },
+    { once: true },
+  );
+  // Match the trusted bootstrap element, not the same text in an authored title.
+  frame.srcdoc = srcdoc.replace(
+    '<script type="application/json" id="codex-visualization-widget-state">__CODEX_VISUALIZATION_WIDGET_STATE__<\/script>',
+    () =>
+      '<script type="application/json" id="codex-visualization-widget-state">' +
+      JSON.stringify(initialGlobals).replaceAll("<", "\\u003c") +
+      "<\/script>",
+  );
+  delete frame.dataset.srcdoc;
+})();
+</script>
+</body>
+</html>
