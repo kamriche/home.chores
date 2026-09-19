@@ -20,4 +20,7 @@ Open `index.html` in a browser. No build step or package installation is require
 
 The current prototype stores changes in memory, so refreshing the page resets the demo data.
 
+- `index.html` contains the application markup and interactions.
+- `styles.css` contains the responsive layout and theme styles.
+
 See [BACKLOG.md](BACKLOG.md) for the implementation roadmap.
