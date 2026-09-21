@@ -88,3 +88,52 @@ body {
 }
 
 #hearth-demo .hc-heading{justify-content:flex-end}
+
+/* Profile settings and account switching */
+#hearth-demo .hc-profile-panel{background:var(--hc-panel);border:1px solid var(--hc-line);border-radius:14px;padding:20px;margin-bottom:22px}
+#hearth-demo .hc-profile-panel .hc-form-head{margin-bottom:8px}
+#hearth-demo .hc-setting-row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0;border-top:1px solid var(--hc-line)}
+#hearth-demo .hc-setting-row>span{display:grid;gap:3px}
+#hearth-demo .hc-setting-row small,#hearth-demo .hc-account-list small{color:var(--hc-muted);font-size:12px}
+#hearth-demo .hc-setting-row select{min-width:150px}
+#hearth-demo .hc-account-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-top:14px}
+#hearth-demo .hc-account-list button{border:1px solid var(--hc-line);background:var(--hc-bg);color:var(--hc-text);border-radius:10px;padding:11px;display:flex;align-items:center;gap:10px;text-align:left}
+#hearth-demo .hc-account-list button[aria-current=true]{border-color:var(--hc-accent);background:var(--hc-soft);color:var(--hc-accent)}
+#hearth-demo .hc-account-list button>span:nth-child(2){display:grid;min-width:0}
+#hearth-demo .hc-account-list button>svg{margin-left:auto}
+
+/* Gantt schedule */
+#hearth-demo .hc-gantt{overflow-x:auto;border:1px solid var(--hc-line);border-radius:14px;background:var(--hc-panel)}
+#hearth-demo .hc-gantt-table{display:grid;grid-template-columns:220px minmax(700px,1fr);min-width:920px}
+#hearth-demo .hc-gantt-corner{padding:14px 16px;border-right:1px solid var(--hc-line);border-bottom:1px solid var(--hc-line);font-weight:500}
+#hearth-demo .hc-gantt-days{display:grid;grid-template-columns:repeat(7,minmax(100px,1fr));border-bottom:1px solid var(--hc-line)}
+#hearth-demo .hc-gantt-days>div{padding:10px;text-align:center;border-left:1px solid var(--hc-line);display:grid;gap:2px}
+#hearth-demo .hc-gantt-days>div:first-child{border-left:0}
+#hearth-demo .hc-gantt-days span{font-size:11px;color:var(--hc-muted)}
+#hearth-demo .hc-gantt-days [data-today=true]{background:var(--hc-soft);color:var(--hc-accent)}
+#hearth-demo .hc-gantt-row{grid-column:1/-1;display:grid;grid-template-columns:220px minmax(700px,1fr);border-bottom:1px solid var(--hc-line)}
+#hearth-demo .hc-gantt-row:last-child{border-bottom:0}
+#hearth-demo .hc-gantt-label{padding:13px 16px;border-right:1px solid var(--hc-line);display:grid;align-content:center;gap:3px;min-width:0}
+#hearth-demo .hc-gantt-label strong{font-size:13px;overflow-wrap:anywhere}
+#hearth-demo .hc-gantt-label span{font-size:11px;color:var(--hc-muted);overflow-wrap:anywhere}
+#hearth-demo .hc-gantt-track{display:grid;grid-template-columns:repeat(7,minmax(100px,1fr));position:relative;min-height:62px}
+#hearth-demo .hc-gantt-cell{grid-row:1;border-left:1px solid var(--hc-line)}
+#hearth-demo .hc-gantt-cell:first-child{border-left:0}
+#hearth-demo .hc-gantt-cell[data-today=true]{background:color-mix(in srgb,var(--hc-soft) 55%,transparent)}
+#hearth-demo .hc-gantt-bar{grid-row:1;z-index:1;align-self:center;justify-self:stretch;margin:0 7px;height:30px;border:0;border-radius:8px;background:var(--hc-accent);color:var(--hc-on);font-size:11px;box-shadow:0 4px 10px rgb(0 0 0/.08)}
+#hearth-demo .hc-gantt-bar[aria-pressed=true]{opacity:.68;text-decoration:line-through}
+#hearth-demo .hc-gantt-empty{grid-column:1/-1;padding:28px;text-align:center;color:var(--hc-muted)}
+
+/* Home and room editing */
+#hearth-demo .hc-heading-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+#hearth-demo .hc-room{justify-content:space-between}
+#hearth-demo .hc-room-main{display:flex;align-items:center;gap:12px;min-width:0}
+
+@media(max-width:520px){
+  #hearth-demo .hc-setting-row{align-items:stretch;flex-direction:column}
+  #hearth-demo .hc-setting-row select{width:100%}
+  #hearth-demo .hc-heading-actions{width:100%}
+  #hearth-demo .hc-heading-actions .hc-button{flex:1}
+  #hearth-demo .hc-gantt-table,#hearth-demo .hc-gantt-row{grid-template-columns:170px minmax(700px,1fr)}
+  #hearth-demo .hc-gantt-table{min-width:870px}
+}

@@ -119,6 +119,9 @@ export default function HomeChoresPage() {
   const [spaceId, setSpaceId] = useState(1);
   const [view, setView] = useState<View>("chores");
   const [dark, setDark] = useState(false);
+  const [language, setLanguage] = useState("English");
+  const [accountName, setAccountName] = useState("Jamie");
+  const [profilePanel, setProfilePanel] = useState<"settings" | "accounts" | null>(null);
   const [houseMenu, setHouseMenu] = useState(false);
   const [userMenu, setUserMenu] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
@@ -134,7 +137,12 @@ export default function HomeChoresPage() {
   ]);
 
   const space = spaces.find((item) => item.id === spaceId) ?? spaces[0];
-  const currentUser = space.people.find((person) => person.name === "Jamie") ?? space.people[0];
+  const currentUser = space.people.find((person) => person.name === accountName);
+  const accountPeople = useMemo(() => {
+    const people = new Map<string, Person>();
+    spaces.forEach((item) => item.people.forEach((person) => people.set(person.name.toLowerCase(), person)));
+    return [...people.values()];
+  }, [spaces]);
   const responsible = space.people.find((person) => person.id === space.responsibleId) ?? space.people[0];
   const unread = notices.filter((notice) => !notice.read).length;
 
@@ -155,6 +163,7 @@ export default function HomeChoresPage() {
     setEditor(null);
     setUserMenu(false);
     setHouseMenu(false);
+    setProfilePanel(null);
     setMessage("");
   };
 
@@ -197,17 +206,18 @@ export default function HomeChoresPage() {
           <header className="hc-top">
             <span>{space.name} / {view === "home" ? "Our home" : view[0].toUpperCase() + view.slice(1)}</span>
             <div className="hc-top-actions">
-              <div className="hc-theme"><span>{dark ? "Dark" : "Light"}</span><button id="hc-theme-toggle" type="button" role="switch" aria-checked={dark} aria-label="Dark theme" onClick={() => setDark(!dark)}><span className="hc-theme-track"><span className="hc-theme-thumb" /></span></button></div>
               <div className="hc-notification-wrap">
                 <button id="hc-notification-button" type="button" aria-label={`Notifications${unread ? ` (${unread} unread)` : ""}`} aria-expanded={notificationsOpen} onClick={() => setNotificationsOpen(!notificationsOpen)}><Bell size={18} />{unread > 0 && <span id="hc-notification-count">{unread}</span>}</button>
                 {notificationsOpen && <NotificationPanel notices={notices} onRead={(id) => setNotices((current) => current.map((notice) => notice.id === id ? { ...notice, read: true } : notice))} onReadAll={() => setNotices((current) => current.map((notice) => ({ ...notice, read: true })))} />}
               </div>
               <div className="hc-user-wrap">
-                <button id="hc-user-button" className="hc-profile" type="button" aria-expanded={userMenu} onClick={() => setUserMenu(!userMenu)}><span className="hc-avatar">J</span><span>Jamie</span><ChevronDown size={16} /></button>
+                <button id="hc-user-button" className="hc-profile" type="button" aria-expanded={userMenu} onClick={() => setUserMenu(!userMenu)}><span className="hc-avatar">{accountName[0]}</span><span>{accountName}</span><ChevronDown size={16} /></button>
                 {userMenu && <section id="hc-user-menu" className="hc-user-menu" aria-label="User menu">
-                  <div className="hc-user-summary"><span className="hc-avatar">J</span><span><strong>Jamie</strong><small>Household account</small></span></div>
+                  <div className="hc-user-summary"><span className="hc-avatar">{accountName[0]}</span><span><strong>{accountName}</strong><small>Household account</small></span></div>
                   <button type="button" onClick={() => { setAllPeople(true); openView("people"); }}><UserRound size={16} /> My profile</button>
                   <button type="button" onClick={() => { setAllPeople(true); openView("people"); }}><Users size={16} /> Manage all people</button>
+                  <button type="button" onClick={() => { setProfilePanel("settings"); setUserMenu(false); }}><Settings2 size={16} /> Settings</button>
+                  <button type="button" onClick={() => { setProfilePanel("accounts"); setUserMenu(false); }}><ChevronsUpDown size={16} /> Switch account</button>
                   <button type="button" onClick={() => { setNotificationsOpen(true); setUserMenu(false); }}><Bell size={16} /> Notification preferences</button>
                 </section>}
               </div>
@@ -221,10 +231,13 @@ export default function HomeChoresPage() {
             setSpaceId(id); setEditor(null); setMessage(`${name} created.`);
           }} />}
 
+          {profilePanel === "settings" && <SettingsPanel dark={dark} language={language} onThemeChange={setDark} onLanguageChange={(value) => { setLanguage(value); setMessage(`${value} saved as your language preference.`); }} onClose={() => setProfilePanel(null)} />}
+          {profilePanel === "accounts" && <AccountSwitcher people={accountPeople} activeName={accountName} onSwitch={(name) => { setAccountName(name); setProfilePanel(null); setMessage(`Switched to ${name}.`); }} onClose={() => setProfilePanel(null)} />}
+
           {view === "chores" && <ChoresView space={space} currentUserId={currentUser?.id ?? 0} mine={mine} setMine={setMine} editor={editor} setEditor={setEditor} setChore={setChore} addChore={(chore) => { updateSpace((current) => ({ ...current, chores: [...current.chores, chore] })); setEditor(null); setMessage("Chore added to your shared board."); }} notify={notify} />}
           {view === "planning" && <PlanningView space={space} mode={planningMode} setMode={setPlanningMode} setChore={setChore} />}
-          {view === "people" && <PeopleView spaces={spaces} space={space} all={allPeople} setAll={setAllPeople} editor={editor} setEditor={setEditor} addPerson={(name, role) => { updateSpace((current) => ({ ...current, people: [...current.people, { id: Date.now(), name, role }] })); setEditor(null); setMessage("Your household has been updated."); }} />}
-          {view === "home" && <HomeView space={space} setResponsible={(responsibleId) => { updateSpace((current) => ({ ...current, responsibleId })); setMessage(`${space.people.find((person) => person.id === responsibleId)?.name} is now responsible for ${space.name}.`); notify("Home responsible updated", space.name); }} />}
+          {view === "people" && <PeopleView spaces={spaces} space={space} all={allPeople} setAll={setAllPeople} editor={editor} setEditor={setEditor} addPerson={(name, role) => { updateSpace((current) => ({ ...current, people: [...current.people, { id: Date.now(), name, role }] })); setEditor(null); setMessage("Your household has been updated."); }} updatePerson={(originalName, patch) => { setSpaces((current) => current.map((item) => ({ ...item, people: item.people.map((person) => person.name === originalName ? { ...person, ...patch } : person) }))); if (accountName === originalName && patch.name) setAccountName(patch.name); setMessage(`${patch.name ?? originalName} updated.`); }} />}
+          {view === "home" && <HomeView space={space} setResponsible={(responsibleId) => { updateSpace((current) => ({ ...current, responsibleId })); setMessage(`${space.people.find((person) => person.id === responsibleId)?.name} is now responsible for ${space.name}.`); notify("Home responsible updated", space.name); }} updateHome={(patch) => { updateSpace((current) => ({ ...current, ...patch, rooms: patch.floors ? current.rooms.map((room) => ({ ...room, floor: Math.min(room.floor, patch.floors!) })) : current.rooms })); setMessage(`${patch.name ?? space.name} updated.`); }} addRoom={(room) => { updateSpace((current) => ({ ...current, rooms: [...current.rooms, room] })); setMessage(`${room.name} added.`); }} updateRoom={(id, patch) => { updateSpace((current) => ({ ...current, rooms: current.rooms.map((room) => room.id === id ? { ...room, ...patch } : room) })); setMessage("Room updated."); }} />}
           <div className="hc-feedback" aria-live="polite">{message}</div>
         </main>
       </div>
@@ -234,6 +247,21 @@ export default function HomeChoresPage() {
 
 function Heading({ action }: { action?: React.ReactNode }) {
   return action ? <div className="hc-heading">{action}</div> : null;
+}
+
+function SettingsPanel({ dark, language, onThemeChange, onLanguageChange, onClose }: { dark: boolean; language: string; onThemeChange: (value: boolean) => void; onLanguageChange: (value: string) => void; onClose: () => void }) {
+  return <section className="hc-profile-panel" aria-label="Profile settings">
+    <div className="hc-form-head"><div><h2>Settings</h2><span className="hc-label">Profile preferences</span></div><button className="hc-quiet" type="button" aria-label="Close settings" onClick={onClose}><X size={18} /></button></div>
+    <div className="hc-setting-row"><span><strong>Appearance</strong><small>Choose the theme used on this device.</small></span><div className="hc-theme"><span>{dark ? "Dark" : "Light"}</span><button id="hc-theme-toggle" type="button" role="switch" aria-checked={dark} aria-label="Dark theme" onClick={() => onThemeChange(!dark)}><span className="hc-theme-track"><span className="hc-theme-thumb" /></span></button></div></div>
+    <div className="hc-setting-row"><span><strong>Language</strong><small>Saved now for future localization.</small></span><select aria-label="Interface language" value={language} onChange={(event) => onLanguageChange(event.target.value)}><option>English</option><option>French</option><option>Japanese</option><option>Spanish</option></select></div>
+  </section>;
+}
+
+function AccountSwitcher({ people, activeName, onSwitch, onClose }: { people: Person[]; activeName: string; onSwitch: (name: string) => void; onClose: () => void }) {
+  return <section className="hc-profile-panel" aria-label="Switch account">
+    <div className="hc-form-head"><div><h2>Switch account</h2><span className="hc-label">Choose who is using Fresh Home.</span></div><button className="hc-quiet" type="button" aria-label="Close account switcher" onClick={onClose}><X size={18} /></button></div>
+    <div className="hc-account-list">{people.map((person) => <button type="button" key={person.name} aria-current={person.name === activeName} onClick={() => onSwitch(person.name)}><span className="hc-avatar">{person.name[0]}</span><span><strong>{person.name}</strong><small>{person.role}</small></span>{person.name === activeName && <Check size={17} />}</button>)}</div>
+  </section>;
 }
 
 function ChoresView({ space, currentUserId, mine, setMine, editor, setEditor, setChore, addChore, notify }: {
@@ -270,29 +298,84 @@ function ChoreForm({ space, defaultPersonId, onCancel, onSubmit }: { space: Shar
 }
 
 function PlanningView({ space, mode, setMode, setChore }: { space: SharedSpace; mode: "scheduled" | "completed"; setMode: (mode: "scheduled" | "completed") => void; setChore: (id: number, patch: Partial<Chore>) => void }) {
-  const days = Array.from({ length: 7 }, (_, index) => addDays(today, index));
-  return <><div className="hc-week-toolbar"><div><h2>{shortDate(days[0])} – {shortDate(days[6])}, 2026</h2><span className="hc-label">Monday to Sunday</span></div><div className="hc-week-actions"><button className="hc-button"><ChevronLeft size={16} />Previous</button><button className="hc-button">This week</button><button className="hc-button">Next<ChevronRight size={16} /></button></div></div><div className="hc-chore-tabs"><button aria-pressed={mode === "scheduled"} onClick={() => setMode("scheduled")}>Scheduled</button><button aria-pressed={mode === "completed"} onClick={() => setMode("completed")}>Completed</button></div><div className="hc-week-grid">{days.map((day) => {
-    const chores = space.chores.filter((chore) => mode === "scheduled" ? chore.scheduled === day : chore.done && chore.doneOn === day);
-    return <section className="hc-day" key={day}><div className="hc-day-heading"><h2>{new Date(`${day}T12:00:00`).toLocaleDateString("en-US", { weekday: "long" })}</h2><span className="hc-label">{shortDate(day)}{day === today ? " · Today" : ""}</span></div>{chores.length ? chores.map((chore) => <article className="hc-plan-task" key={chore.id}><h3>{chore.name}</h3><p>{space.rooms.find((room) => room.id === chore.roomId)?.name} · {chore.time}</p><div className="hc-plan-person"><span className="hc-avatar">{space.people.find((person) => person.id === chore.personId)?.name[0] ?? "?"}</span><span>{space.people.find((person) => person.id === chore.personId)?.name ?? "Unassigned"}</span><button className="hc-check" aria-pressed={chore.done} onClick={() => setChore(chore.id, { done: !chore.done, doneOn: !chore.done ? today : undefined })}><Check size={15} /></button></div></article>) : <p className="hc-day-empty">{mode === "scheduled" ? "Nothing scheduled" : "No completed chores"}</p>}</section>;
-  })}</div></>;
+  const [weekOffset, setWeekOffset] = useState(0);
+  const weekStart = addDays(today, weekOffset * 7);
+  const days = Array.from({ length: 7 }, (_, index) => addDays(weekStart, index));
+  const occurrences = (chore: Chore) => {
+    if (mode === "completed") return chore.doneOn && days.includes(chore.doneOn) ? [chore.doneOn] : [];
+    return days.filter((day) => {
+      if (day < chore.scheduled) return false;
+      const scheduled = new Date(`${chore.scheduled}T12:00:00`);
+      const candidate = new Date(`${day}T12:00:00`);
+      const dayDifference = Math.round((candidate.getTime() - scheduled.getTime()) / 86_400_000);
+      if (chore.frequency === "Daily") return true;
+      if (chore.frequency === "Weekly") return dayDifference % 7 === 0;
+      if (chore.frequency === "Monthly") return candidate.getDate() === scheduled.getDate();
+      return day === chore.scheduled;
+    });
+  };
+  const rows = space.chores.filter((chore) => (mode === "scheduled" || chore.done) && occurrences(chore).length > 0);
+  return <>
+    <div className="hc-week-toolbar"><div><h2>{shortDate(days[0])} – {shortDate(days[6])}</h2><span className="hc-label">Seven-day schedule</span></div><div className="hc-week-actions"><button className="hc-button" onClick={() => setWeekOffset((value) => value - 1)}><ChevronLeft size={16} />Previous</button><button className="hc-button" onClick={() => setWeekOffset(0)}>This week</button><button className="hc-button" onClick={() => setWeekOffset((value) => value + 1)}>Next<ChevronRight size={16} /></button></div></div>
+    <div className="hc-chore-tabs"><button aria-pressed={mode === "scheduled"} onClick={() => setMode("scheduled")}>Scheduled</button><button aria-pressed={mode === "completed"} onClick={() => setMode("completed")}>Completed</button></div>
+    <section className="hc-gantt" aria-label={`${mode} chore schedule`}>
+      <div className="hc-gantt-table">
+        <div className="hc-gantt-corner">Task</div>
+        <div className="hc-gantt-days">{days.map((day) => <div key={day} data-today={day === today}><strong>{new Date(`${day}T12:00:00`).toLocaleDateString("en-US", { weekday: "short" })}</strong><span>{shortDate(day)}</span></div>)}</div>
+        {rows.map((chore) => {
+          const person = space.people.find((item) => item.id === chore.personId);
+          const room = space.rooms.find((item) => item.id === chore.roomId);
+          const dates = occurrences(chore);
+          return <div className="hc-gantt-row" key={chore.id}>
+            <div className="hc-gantt-label"><strong>{chore.name}</strong><span>{person?.name ?? "Unassigned"} · {room?.name ?? "No room"}</span></div>
+            <div className="hc-gantt-track">{days.map((day) => <div className="hc-gantt-cell" data-today={day === today} key={day} />)}{dates.map((date) => <button type="button" className="hc-gantt-bar" style={{ gridColumn: days.indexOf(date) + 1 }} key={date} aria-label={`${chore.name} on ${shortDate(date)}`} aria-pressed={chore.done} onClick={() => setChore(chore.id, { done: !chore.done, doneOn: !chore.done ? date : undefined })}><span>{chore.time}</span></button>)}</div>
+          </div>;
+        })}
+        {!rows.length && <div className="hc-gantt-empty">No chores to show in this view.</div>}
+      </div>
+    </section>
+  </>;
 }
 
-function PeopleView({ spaces, space, all, setAll, editor, setEditor, addPerson }: { spaces: SharedSpace[]; space: SharedSpace; all: boolean; setAll: (value: boolean) => void; editor: string | null; setEditor: (value: "person" | null) => void; addPerson: (name: string, role: Person["role"]) => void }) {
+function PeopleView({ spaces, space, all, setAll, editor, setEditor, addPerson, updatePerson }: { spaces: SharedSpace[]; space: SharedSpace; all: boolean; setAll: (value: boolean) => void; editor: string | null; setEditor: (value: "person" | null) => void; addPerson: (name: string, role: Person["role"]) => void; updatePerson: (originalName: string, patch: Partial<Person>) => void }) {
+  const [editingPerson, setEditingPerson] = useState<Person | null>(null);
   const directory = useMemo(() => {
     const members = new Map<string, { person: Person; spaces: SharedSpace[] }>();
     spaces.forEach((item) => item.people.forEach((person) => { const key = person.name.toLowerCase(); const existing = members.get(key); if (existing) existing.spaces.push(item); else members.set(key, { person, spaces: [item] }); }));
     return [...members.values()];
   }, [spaces]);
-  return <><Heading action={<button className="hc-button hc-primary" onClick={() => setEditor("person")}><Plus size={16} /> Add person</button>} /><div className="hc-chore-tabs"><button aria-pressed={!all} onClick={() => setAll(false)}>{space.name}</button><button aria-pressed={all} onClick={() => setAll(true)}>All people <span>{directory.length}</span></button></div>{editor === "person" && <PersonForm onCancel={() => setEditor(null)} onSubmit={addPerson} />}<div className="hc-grid">{(all ? directory : space.people.map((person) => ({ person, spaces: [space] }))).map(({ person, spaces: memberSpaces }) => <article className="hc-member" key={person.name}><div className="hc-member-head"><span className="hc-avatar">{person.name[0]}</span><div><h2>{person.name}</h2><p className="hc-label">{person.role}</p><div className="hc-member-spaces">{memberSpaces.map((item) => <span key={item.id}>{item.name}{item.responsibleId === item.people.find((member) => member.name === person.name)?.id ? " · Responsible" : ""}</span>)}</div>{!all && space.responsibleId === person.id && <span className="hc-owner-badge"><ShieldCheck size={13} /> Home responsible</span>}</div></div><div className="hc-member-footer"><span className="hc-label">{memberSpaces.length} shared space{memberSpaces.length === 1 ? "" : "s"}</span><button className="hc-quiet" aria-label={`Manage ${person.name}`}><Settings2 size={16} /></button></div></article>)}</div></>;
+  return <>
+    <Heading action={<button className="hc-button hc-primary" onClick={() => { setEditingPerson(null); setEditor("person"); }}><Plus size={16} /> Add person</button>} />
+    <div className="hc-chore-tabs"><button aria-pressed={!all} onClick={() => setAll(false)}>{space.name}</button><button aria-pressed={all} onClick={() => setAll(true)}>All people <span>{directory.length}</span></button></div>
+    {editor === "person" && <PersonForm person={editingPerson} onCancel={() => { setEditor(null); setEditingPerson(null); }} onSubmit={(name, role) => { if (editingPerson) updatePerson(editingPerson.name, { name, role }); else addPerson(name, role); setEditor(null); setEditingPerson(null); }} />}
+    <div className="hc-grid">{(all ? directory : space.people.map((person) => ({ person, spaces: [space] }))).map(({ person, spaces: memberSpaces }) => <article className="hc-member" key={person.name}><div className="hc-member-head"><span className="hc-avatar">{person.name[0]}</span><div><h2>{person.name}</h2><p className="hc-label">{person.role}</p><div className="hc-member-spaces">{memberSpaces.map((item) => <span key={item.id}>{item.name}{item.responsibleId === item.people.find((member) => member.name === person.name)?.id ? " · Responsible" : ""}</span>)}</div>{!all && space.responsibleId === person.id && <span className="hc-owner-badge"><ShieldCheck size={13} /> Home responsible</span>}</div></div><div className="hc-member-footer"><span className="hc-label">{memberSpaces.length} shared space{memberSpaces.length === 1 ? "" : "s"}</span><button className="hc-quiet" aria-label={`Manage ${person.name}`} onClick={() => { setEditingPerson(person); setEditor("person"); }}><Settings2 size={16} /></button></div></article>)}</div>
+  </>;
 }
 
-function PersonForm({ onCancel, onSubmit }: { onCancel: () => void; onSubmit: (name: string, role: Person["role"]) => void }) {
-  return <form className="hc-form" onSubmit={(event) => { event.preventDefault(); const data = new FormData(event.currentTarget); onSubmit(String(data.get("name")), data.get("role") as Person["role"]); }}><div className="hc-form-head"><h2>Add someone to your home</h2><button className="hc-button" type="button" onClick={onCancel}>Cancel</button></div><div className="hc-fields"><label>Name<input name="name" required placeholder="e.g. Taylor" /></label><label>Relationship<select name="role"><option>Family member</option><option>Roommate</option></select></label></div><div className="hc-actions"><button className="hc-button hc-primary">Add person</button></div></form>;
+function PersonForm({ person, onCancel, onSubmit }: { person?: Person | null; onCancel: () => void; onSubmit: (name: string, role: Person["role"]) => void }) {
+  return <form className="hc-form" onSubmit={(event) => { event.preventDefault(); const data = new FormData(event.currentTarget); onSubmit(String(data.get("name")), data.get("role") as Person["role"]); }}><div className="hc-form-head"><h2>{person ? `Manage ${person.name}` : "Add someone to your home"}</h2><button className="hc-button" type="button" onClick={onCancel}>Cancel</button></div><div className="hc-fields"><label>Name<input name="name" required defaultValue={person?.name} placeholder="e.g. Taylor" /></label><label>Relationship<select name="role" defaultValue={person?.role ?? "Family member"}><option>Family member</option><option>Roommate</option></select></label></div><div className="hc-actions"><button className="hc-button hc-primary">{person ? "Save changes" : "Add person"}</button></div></form>;
 }
 
-function HomeView({ space, setResponsible }: { space: SharedSpace; setResponsible: (id: number) => void }) {
+function HomeView({ space, setResponsible, updateHome, addRoom, updateRoom }: { space: SharedSpace; setResponsible: (id: number) => void; updateHome: (patch: Partial<SharedSpace>) => void; addRoom: (room: Room) => void; updateRoom: (id: number, patch: Partial<Room>) => void }) {
+  const [setupOpen, setSetupOpen] = useState(false);
+  const [roomEditor, setRoomEditor] = useState<number | "new" | null>(null);
   const responsible = space.people.find((person) => person.id === space.responsibleId);
-  return <><Heading action={<button className="hc-button hc-primary"><Settings2 size={16} /> Set up home</button>} /><section className="hc-responsible"><div className="hc-responsible-info"><span><ShieldCheck size={18} /></span><span><strong>{responsible?.name ?? "No responsible person"}</strong><small>Responsible for {space.name}</small></span></div><label>Change responsible<select aria-label={`Responsible person for ${space.name}`} value={space.responsibleId} onChange={(event) => setResponsible(Number(event.target.value))}>{space.people.map((person) => <option key={person.id} value={person.id}>{person.name}</option>)}</select></label></section>{Array.from({ length: space.floors }, (_, index) => index + 1).map((floor) => <section className="hc-floor" key={floor}><h2>{floor === 1 ? "Ground floor" : `Floor ${floor}`}</h2><div className="hc-grid">{space.rooms.filter((room) => room.floor === floor).map((room) => <article className="hc-room" key={room.id}><span className="hc-room-icon"><Home size={18} /></span><div><h2>{room.name}</h2><p>{room.type} · {space.chores.filter((chore) => chore.roomId === room.id && !chore.done).length} chores to do</p></div></article>)}</div></section>)}</>;
+  const selectedRoom = typeof roomEditor === "number" ? space.rooms.find((room) => room.id === roomEditor) : undefined;
+  return <>
+    <Heading action={<div className="hc-heading-actions"><button className="hc-button" onClick={() => { setSetupOpen(false); setRoomEditor("new"); }}><Plus size={16} /> Add room</button><button className="hc-button hc-primary" aria-pressed={setupOpen} onClick={() => { setRoomEditor(null); setSetupOpen(!setupOpen); }}><Settings2 size={16} /> Set up home</button></div>} />
+    {setupOpen && <HomeSetupForm space={space} onCancel={() => setSetupOpen(false)} onSubmit={(patch) => { updateHome(patch); setSetupOpen(false); }} />}
+    {roomEditor && <RoomForm room={selectedRoom} floors={space.floors} onCancel={() => setRoomEditor(null)} onSubmit={(patch) => { if (selectedRoom) updateRoom(selectedRoom.id, patch); else addRoom({ id: Date.now(), name: patch.name ?? "New room", type: patch.type ?? "Other", floor: patch.floor ?? 1 }); setRoomEditor(null); }} />}
+    <section className="hc-responsible"><div className="hc-responsible-info"><span><ShieldCheck size={18} /></span><span><strong>{responsible?.name ?? "No responsible person"}</strong><small>Responsible for {space.name}</small></span></div><label>Change responsible<select aria-label={`Responsible person for ${space.name}`} value={space.responsibleId} onChange={(event) => setResponsible(Number(event.target.value))}>{space.people.map((person) => <option key={person.id} value={person.id}>{person.name}</option>)}</select></label></section>
+    {Array.from({ length: space.floors }, (_, index) => index + 1).map((floor) => <section className="hc-floor" key={floor}><h2>{floor === 1 ? "Ground floor" : `Floor ${floor}`}</h2><div className="hc-grid">{space.rooms.filter((room) => room.floor === floor).map((room) => <article className="hc-room" key={room.id}><div className="hc-room-main"><span className="hc-room-icon"><Home size={18} /></span><div><h2>{room.name}</h2><p>{room.type} · {space.chores.filter((chore) => chore.roomId === room.id && !chore.done).length} chores to do</p></div></div><button className="hc-quiet" type="button" aria-label={`Edit ${room.name}`} onClick={() => { setSetupOpen(false); setRoomEditor(room.id); }}><Settings2 size={16} /></button></article>)}</div></section>)}
+  </>;
+}
+
+function HomeSetupForm({ space, onCancel, onSubmit }: { space: SharedSpace; onCancel: () => void; onSubmit: (patch: Partial<SharedSpace>) => void }) {
+  return <form className="hc-form" onSubmit={(event) => { event.preventDefault(); const data = new FormData(event.currentTarget); onSubmit({ name: String(data.get("name")), type: String(data.get("type")), floors: Number(data.get("floors")) }); }}><div className="hc-form-head"><h2>Set up {space.name}</h2><button className="hc-button" type="button" onClick={onCancel}>Cancel</button></div><div className="hc-fields"><label>Home name<input name="name" required defaultValue={space.name} /></label><label>Type<select name="type" defaultValue={space.type}><option>House</option><option>Apartment</option><option>Shared house</option><option>Other</option></select></label><label>Number of floors<input name="floors" type="number" min={1} max={10} required defaultValue={space.floors} /></label></div><div className="hc-actions"><button className="hc-button hc-primary">Save home</button></div></form>;
+}
+
+function RoomForm({ room, floors, onCancel, onSubmit }: { room?: Room; floors: number; onCancel: () => void; onSubmit: (patch: Partial<Room>) => void }) {
+  return <form className="hc-form" onSubmit={(event) => { event.preventDefault(); const data = new FormData(event.currentTarget); onSubmit({ name: String(data.get("name")), type: String(data.get("type")), floor: Number(data.get("floor")) }); }}><div className="hc-form-head"><h2>{room ? `Edit ${room.name}` : "Add a room"}</h2><button className="hc-button" type="button" onClick={onCancel}>Cancel</button></div><div className="hc-fields"><label>Room name<input name="name" required defaultValue={room?.name} placeholder="e.g. Guest bedroom" /></label><label>Room type<select name="type" defaultValue={room?.type ?? "Bedroom"}><option>Kitchen</option><option>Bathroom</option><option>Living room</option><option>Bedroom</option><option>Dining room</option><option>Office</option><option>Laundry room</option><option>Garage</option><option>Outdoor</option><option>Other</option></select></label><label>Floor<select name="floor" defaultValue={room?.floor ?? 1}>{Array.from({ length: floors }, (_, index) => index + 1).map((floor) => <option value={floor} key={floor}>{floor === 1 ? "Ground floor" : `Floor ${floor}`}</option>)}</select></label></div><div className="hc-actions"><button className="hc-button hc-primary">{room ? "Save room" : "Add room"}</button></div></form>;
 }
 
 function SpaceForm({ onCancel, onSubmit }: { onCancel: () => void; onSubmit: (name: string, type: string) => void }) {
