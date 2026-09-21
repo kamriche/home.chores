@@ -143,3 +143,25 @@ body {
 #hearth-demo .hc-danger{border-color:light-dark(#c96b5c,#d88b7d);color:light-dark(#9d3528,#ffc0b5);background:transparent}
 #hearth-demo .hc-danger:hover:not(:disabled),#hearth-demo .hc-danger:focus-visible:not(:disabled){background:light-dark(#fff0ed,#4b2925)}
 @media(max-width:520px){#hearth-demo .hc-actions-split{align-items:stretch;flex-direction:column-reverse}#hearth-demo .hc-actions-split .hc-button{width:100%}}
+
+/* Daily and weekly planning scales */
+#hearth-demo .hc-planning-controls{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:22px;border-bottom:1px solid var(--hc-line);flex-wrap:wrap}
+#hearth-demo .hc-planning-controls .hc-chore-tabs{margin-bottom:-1px;border-bottom:0}
+#hearth-demo .hc-view-toggle{display:flex;gap:4px;padding:4px;background:var(--hc-panel);border:1px solid var(--hc-line);border-radius:10px;margin-bottom:7px}
+#hearth-demo .hc-view-toggle button{border:0;background:transparent;color:var(--hc-muted);border-radius:7px;padding:7px 13px;min-width:62px}
+#hearth-demo .hc-view-toggle button[aria-pressed=true]{background:var(--hc-soft);color:var(--hc-accent)}
+#hearth-demo .hc-gantt-table.hc-gantt-daily{grid-template-columns:220px minmax(1386px,1fr);min-width:1606px}
+#hearth-demo .hc-gantt-hours{display:grid;grid-template-columns:repeat(33,minmax(42px,1fr));border-bottom:1px solid var(--hc-line)}
+#hearth-demo .hc-gantt-hours>div{padding:12px 2px;text-align:center;border-left:1px solid var(--hc-line);min-width:0}
+#hearth-demo .hc-gantt-hours>div:nth-child(even){border-left-style:dashed}
+#hearth-demo .hc-gantt-hours span{font-size:10px;color:var(--hc-muted);white-space:nowrap}
+#hearth-demo .hc-gantt-row.hc-gantt-row-daily{grid-template-columns:220px minmax(1386px,1fr)}
+#hearth-demo .hc-gantt-track-hours{grid-template-columns:repeat(33,minmax(42px,1fr))}
+#hearth-demo .hc-gantt-track-hours .hc-gantt-cell:nth-child(even){border-left-style:dashed}
+#hearth-demo .hc-gantt-hour-bar{min-width:max-content;padding:0 9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:520px){
+  #hearth-demo .hc-planning-controls{align-items:stretch}
+  #hearth-demo .hc-view-toggle{margin-left:auto}
+  #hearth-demo .hc-gantt-table.hc-gantt-daily,#hearth-demo .hc-gantt-row.hc-gantt-row-daily{grid-template-columns:170px minmax(1386px,1fr)}
+  #hearth-demo .hc-gantt-table.hc-gantt-daily{min-width:1556px}
+}

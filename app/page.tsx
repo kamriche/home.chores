@@ -30,11 +30,13 @@ type Chore = {
   roomId: number;
   personId: number;
   time: string;
+  startTime: string;
   frequency: Recurrence;
   tools: string[];
   scheduled: string;
   done: boolean;
   doneOn?: string;
+  completedDates?: string[];
 };
 type SharedSpace = {
   id: number;
@@ -81,10 +83,10 @@ const initialSpaces: SharedSpace[] = [
       { id: 6, name: "Upstairs bathroom", type: "Bathroom", floor: 2 },
     ],
     chores: [
-      { id: 1, name: "Wipe counters & stovetop", roomId: 1, personId: 1, time: "10 min", frequency: "Daily", tools: ["Microfiber cloth", "Cleaning spray"], scheduled: today, done: false },
-      { id: 2, name: "Vacuum the living room", roomId: 2, personId: 2, time: "20 min", frequency: "Weekly", tools: ["Vacuum"], scheduled: addDays(today, 1), done: false },
-      { id: 3, name: "Clean sink & mirror", roomId: 3, personId: 3, time: "15 min", frequency: "Weekly", tools: ["Sponge", "Glass cleaner"], scheduled: addDays(today, 2), done: false },
-      { id: 4, name: "Take out the recycling", roomId: 1, personId: 2, time: "5 min", frequency: "Weekly", tools: ["Bin bags"], scheduled: addDays(today, -1), done: true, doneOn: addDays(today, -1) },
+      { id: 1, name: "Wipe counters & stovetop", roomId: 1, personId: 1, time: "10 min", startTime: "08:00", frequency: "Daily", tools: ["Microfiber cloth", "Cleaning spray"], scheduled: today, done: false },
+      { id: 2, name: "Vacuum the living room", roomId: 2, personId: 2, time: "20 min", startTime: "18:00", frequency: "Weekly", tools: ["Vacuum"], scheduled: addDays(today, 1), done: false },
+      { id: 3, name: "Clean sink & mirror", roomId: 3, personId: 3, time: "15 min", startTime: "19:00", frequency: "Weekly", tools: ["Sponge", "Glass cleaner"], scheduled: addDays(today, 2), done: false },
+      { id: 4, name: "Take out the recycling", roomId: 1, personId: 2, time: "5 min", startTime: "20:00", frequency: "Weekly", tools: ["Bin bags"], scheduled: addDays(today, -1), done: true, doneOn: addDays(today, -1), completedDates: [addDays(today, -1)] },
     ],
   },
   {
@@ -105,8 +107,8 @@ const initialSpaces: SharedSpace[] = [
       { id: 104, name: "Bathroom", type: "Bathroom", floor: 1 },
     ],
     chores: [
-      { id: 101, name: "Mop the kitchen floor", roomId: 101, personId: 102, time: "20 min", frequency: "Weekly", tools: ["Mop", "Bucket"], scheduled: addDays(today, 2), done: false },
-      { id: 102, name: "Clean the bathroom", roomId: 104, personId: 101, time: "30 min", frequency: "Weekly", tools: ["Sponge", "Cleaning spray", "Gloves"], scheduled: addDays(today, 5), done: false },
+      { id: 101, name: "Mop the kitchen floor", roomId: 101, personId: 102, time: "20 min", startTime: "17:30", frequency: "Weekly", tools: ["Mop", "Bucket"], scheduled: addDays(today, 2), done: false },
+      { id: 102, name: "Clean the bathroom", roomId: 104, personId: 101, time: "30 min", startTime: "10:00", frequency: "Weekly", tools: ["Sponge", "Cleaning spray", "Gloves"], scheduled: addDays(today, 5), done: false },
     ],
   },
 ];
@@ -297,21 +299,22 @@ function ChoresView({ space, currentUserId, mine, setMine, editor, setEditor, se
   space: SharedSpace; currentUserId: number; mine: boolean; setMine: (value: boolean) => void; editor: string | null; setEditor: (value: "chore" | null) => void; setChore: (id: number, patch: Partial<Chore>) => void; addChore: (chore: Chore) => void; notify: (title: string, detail: string) => void;
 }) {
   const visible = space.chores.filter((chore) => !mine || chore.personId === currentUserId);
-  const completed = visible.filter((chore) => chore.done).length;
+  const completed = visible.filter((chore) => (chore.completedDates ?? []).includes(today)).length;
   return <>
     <Heading action={<button className="hc-button hc-primary" onClick={() => setEditor("chore")}><Plus size={16} /> Add chore</button>} />
     <div className="hc-chore-tabs"><button aria-pressed={!mine} onClick={() => setMine(false)}>All chores <span>{space.chores.length}</span></button><button aria-pressed={mine} onClick={() => setMine(true)}>My tasks <span>{space.chores.filter((chore) => chore.personId === currentUserId).length}</span></button></div>
     {editor === "chore" && <ChoreForm space={space} defaultPersonId={mine ? currentUserId : 0} onCancel={() => setEditor(null)} onSubmit={addChore} />}
     <section className="hc-banner"><div><h2>Every little bit makes a difference</h2><p>{completed} of {visible.length} chores complete on your shared board</p><div className="hc-progress"><span style={{ width: `${visible.length ? (completed / visible.length) * 100 : 0}%` }} /></div></div><div className="hc-score">{completed} / {visible.length}</div></section>
-    <div className="hc-section-title"><h2>{mine ? "My chore board" : "Your shared chore board"}</h2><span className="hc-label">{visible.filter((chore) => !chore.done).length} to do</span></div>
+    <div className="hc-section-title"><h2>{mine ? "My chore board" : "Your shared chore board"}</h2><span className="hc-label">{visible.filter((chore) => !(chore.completedDates ?? []).includes(today)).length} to do</span></div>
     <div className="hc-grid">{visible.map((chore) => {
       const room = space.rooms.find((item) => item.id === chore.roomId);
       const person = space.people.find((item) => item.id === chore.personId);
-      return <article className={`hc-task ${chore.done ? "hc-done" : ""}`} key={chore.id}>
+      const completedToday = (chore.completedDates ?? []).includes(today);
+      return <article className={`hc-task ${completedToday ? "hc-done" : ""}`} key={chore.id}>
         <div className="hc-task-top"><span className="hc-room-icon"><Home size={18} /></span><label className="hc-repeat"><span>Repeats</span><select aria-label={`Recurrence for ${chore.name}`} value={chore.frequency} onChange={(event) => { setChore(chore.id, { frequency: event.target.value as Recurrence }); notify("Recurrence updated", chore.name); }}><option>One-off</option><option>Daily</option><option>Weekly</option><option>Monthly</option></select></label></div>
-        <h2>{chore.name}</h2><p>{room?.name ?? "Choose a room"} · {chore.time}</p>
+        <h2>{chore.name}</h2><p>{room?.name ?? "Choose a room"} · {chore.startTime} · {chore.time}</p>
         <div className="hc-tools"><div className="hc-tools-head"><span>Tools & supplies</span></div><div className="hc-tool-list">{chore.tools.length ? chore.tools.map((tool) => <span className="hc-tool-pill" key={tool}>{tool}</span>) : <span className="hc-label">No tools needed</span>}</div></div>
-        <div className="hc-task-bottom"><div className="hc-assignee"><span className="hc-avatar">{person?.name[0] ?? "?"}</span><select aria-label={`Assign ${chore.name}`} value={chore.personId} onChange={(event) => setChore(chore.id, { personId: Number(event.target.value) })}><option value={0}>Unassigned</option>{space.people.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></div><button className="hc-check" aria-label={`${chore.done ? "Reopen" : "Complete"} ${chore.name}`} aria-pressed={chore.done} onClick={() => setChore(chore.id, { done: !chore.done, doneOn: !chore.done ? today : undefined })}><Check size={16} /></button></div>
+        <div className="hc-task-bottom"><div className="hc-assignee"><span className="hc-avatar">{person?.name[0] ?? "?"}</span><select aria-label={`Assign ${chore.name}`} value={chore.personId} onChange={(event) => setChore(chore.id, { personId: Number(event.target.value) })}><option value={0}>Unassigned</option>{space.people.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></div><button className="hc-check" aria-label={`${completedToday ? "Reopen" : "Complete"} ${chore.name} for today`} aria-pressed={completedToday} onClick={() => { const current = chore.completedDates ?? []; const completedDates = completedToday ? current.filter((date) => date !== today) : [...current, today]; setChore(chore.id, { completedDates, done: completedDates.length > 0, doneOn: completedDates[completedDates.length - 1] }); }}><Check size={16} /></button></div>
       </article>;
     })}</div>
     {!visible.length && <p className="hc-empty">{mine ? "No chores assigned to you yet." : "No chores in this shared space yet."}</p>}
@@ -321,17 +324,23 @@ function ChoresView({ space, currentUserId, mine, setMine, editor, setEditor, se
 function ChoreForm({ space, defaultPersonId, onCancel, onSubmit }: { space: SharedSpace; defaultPersonId: number; onCancel: () => void; onSubmit: (chore: Chore) => void }) {
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); const data = new FormData(event.currentTarget);
-    onSubmit({ id: Date.now(), name: String(data.get("name")), roomId: Number(data.get("room")), personId: Number(data.get("person")), time: String(data.get("time")), frequency: data.get("frequency") as Recurrence, tools: String(data.get("tools") || "").split(",").map((item) => item.trim()).filter(Boolean), scheduled: String(data.get("scheduled")), done: false });
+    onSubmit({ id: Date.now(), name: String(data.get("name")), roomId: Number(data.get("room")), personId: Number(data.get("person")), time: String(data.get("time")), startTime: String(data.get("startTime")), frequency: data.get("frequency") as Recurrence, tools: String(data.get("tools") || "").split(",").map((item) => item.trim()).filter(Boolean), scheduled: String(data.get("scheduled")), done: false });
   };
-  return <form className="hc-form" onSubmit={submit}><div className="hc-form-head"><h2>A new chore</h2><button className="hc-button" type="button" onClick={onCancel}>Cancel</button></div><div className="hc-fields"><label>Chore name<input name="name" required placeholder="e.g. Mop the kitchen floor" /></label><label>Room / place<select name="room">{space.rooms.map((room) => <option key={room.id} value={room.id}>{room.name}</option>)}</select></label><label>Assign to<select name="person" defaultValue={defaultPersonId}><option value={0}>Unassigned</option>{space.people.map((person) => <option key={person.id} value={person.id}>{person.name}</option>)}</select></label><label>Repeats<select name="frequency" defaultValue="Weekly"><option>One-off</option><option>Daily</option><option>Weekly</option><option>Monthly</option></select></label><label>Estimated time<select name="time" defaultValue="15 min"><option>5 min</option><option>10 min</option><option>15 min</option><option>20 min</option><option>30 min</option></select></label><label>Scheduled for<input type="date" name="scheduled" defaultValue={today} /></label><label>Tools & supplies<input name="tools" placeholder="Mop, bucket, gloves" /></label></div><div className="hc-actions"><button className="hc-button hc-primary">Create chore</button></div></form>;
+  return <form className="hc-form" onSubmit={submit}><div className="hc-form-head"><h2>A new chore</h2><button className="hc-button" type="button" onClick={onCancel}>Cancel</button></div><div className="hc-fields"><label>Chore name<input name="name" required placeholder="e.g. Mop the kitchen floor" /></label><label>Room / place<select name="room">{space.rooms.map((room) => <option key={room.id} value={room.id}>{room.name}</option>)}</select></label><label>Assign to<select name="person" defaultValue={defaultPersonId}><option value={0}>Unassigned</option>{space.people.map((person) => <option key={person.id} value={person.id}>{person.name}</option>)}</select></label><label>Repeats<select name="frequency" defaultValue="Weekly"><option>One-off</option><option>Daily</option><option>Weekly</option><option>Monthly</option></select></label><label>Estimated time<select name="time" defaultValue="15 min"><option>5 min</option><option>10 min</option><option>15 min</option><option>20 min</option><option>30 min</option><option>45 min</option><option>60 min</option><option>90 min</option></select></label><label>Start time<input type="time" name="startTime" min="06:00" max="22:00" step="1800" defaultValue="09:00" required /></label><label>Scheduled for<input type="date" name="scheduled" defaultValue={today} /></label><label>Tools & supplies<input name="tools" placeholder="Mop, bucket, gloves" /></label></div><div className="hc-actions"><button className="hc-button hc-primary">Create chore</button></div></form>;
 }
 
 function PlanningView({ space, mode, setMode, setChore }: { space: SharedSpace; mode: "scheduled" | "completed"; setMode: (mode: "scheduled" | "completed") => void; setChore: (id: number, patch: Partial<Chore>) => void }) {
-  const [weekOffset, setWeekOffset] = useState(0);
-  const weekStart = addDays(today, weekOffset * 7);
-  const days = Array.from({ length: 7 }, (_, index) => addDays(weekStart, index));
+  const [scale, setScale] = useState<"week" | "day">("week");
+  const [offset, setOffset] = useState(0);
+  const periodStart = addDays(today, scale === "week" ? offset * 7 : offset);
+  const days = Array.from({ length: scale === "week" ? 7 : 1 }, (_, index) => addDays(periodStart, index));
+  const halfHours = Array.from({ length: 33 }, (_, index) => {
+    const totalMinutes = 360 + index * 30;
+    return `${String(Math.floor(totalMinutes / 60)).padStart(2, "0")}:${totalMinutes % 60 ? "30" : "00"}`;
+  });
+  const completionDates = (chore: Chore) => chore.completedDates ?? (chore.doneOn ? [chore.doneOn] : []);
   const occurrences = (chore: Chore) => {
-    if (mode === "completed") return chore.doneOn && days.includes(chore.doneOn) ? [chore.doneOn] : [];
+    if (mode === "completed") return completionDates(chore).filter((date) => days.includes(date));
     return days.filter((day) => {
       if (day < chore.scheduled) return false;
       const scheduled = new Date(`${chore.scheduled}T12:00:00`);
@@ -343,21 +352,31 @@ function PlanningView({ space, mode, setMode, setChore }: { space: SharedSpace; 
       return day === chore.scheduled;
     });
   };
-  const rows = space.chores.filter((chore) => (mode === "scheduled" || chore.done) && occurrences(chore).length > 0);
+  const rows = space.chores.filter((chore) => occurrences(chore).length > 0);
+  const toggleOccurrence = (chore: Chore, date: string) => {
+    const current = completionDates(chore);
+    const completed = current.includes(date);
+    const completedDates = completed ? current.filter((item) => item !== date) : [...current, date].sort();
+    setChore(chore.id, { completedDates, done: completedDates.length > 0, doneOn: completedDates[completedDates.length - 1] });
+  };
+  const periodTitle = scale === "week" ? `${shortDate(days[0])} – ${shortDate(days[6])}` : new Date(`${days[0]}T12:00:00`).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
   return <>
-    <div className="hc-week-toolbar"><div><h2>{shortDate(days[0])} – {shortDate(days[6])}</h2><span className="hc-label">Seven-day schedule</span></div><div className="hc-week-actions"><button className="hc-button" onClick={() => setWeekOffset((value) => value - 1)}><ChevronLeft size={16} />Previous</button><button className="hc-button" onClick={() => setWeekOffset(0)}>This week</button><button className="hc-button" onClick={() => setWeekOffset((value) => value + 1)}>Next<ChevronRight size={16} /></button></div></div>
-    <div className="hc-chore-tabs"><button aria-pressed={mode === "scheduled"} onClick={() => setMode("scheduled")}>Scheduled</button><button aria-pressed={mode === "completed"} onClick={() => setMode("completed")}>Completed</button></div>
+    <div className="hc-week-toolbar"><div><h2>{periodTitle}</h2><span className="hc-label">{scale === "week" ? "Seven-day schedule" : "Hourly schedule · 06:00–22:00"}</span></div><div className="hc-week-actions"><button className="hc-button" onClick={() => setOffset((value) => value - 1)}><ChevronLeft size={16} />Previous</button><button className="hc-button" onClick={() => setOffset(0)}>{scale === "week" ? "This week" : "Today"}</button><button className="hc-button" onClick={() => setOffset((value) => value + 1)}>Next<ChevronRight size={16} /></button></div></div>
+    <div className="hc-planning-controls"><div className="hc-chore-tabs"><button aria-pressed={mode === "scheduled"} onClick={() => setMode("scheduled")}>Scheduled</button><button aria-pressed={mode === "completed"} onClick={() => setMode("completed")}>Completed</button></div><div className="hc-view-toggle" aria-label="Planning view"><button aria-pressed={scale === "week"} onClick={() => { setScale("week"); setOffset(0); }}>Week</button><button aria-pressed={scale === "day"} onClick={() => { setScale("day"); setOffset(0); }}>Day</button></div></div>
     <section className="hc-gantt" aria-label={`${mode} chore schedule`}>
-      <div className="hc-gantt-table">
+      <div className={`hc-gantt-table ${scale === "day" ? "hc-gantt-daily" : ""}`}>
         <div className="hc-gantt-corner">Task</div>
-        <div className="hc-gantt-days">{days.map((day) => <div key={day} data-today={day === today}><strong>{new Date(`${day}T12:00:00`).toLocaleDateString("en-US", { weekday: "short" })}</strong><span>{shortDate(day)}</span></div>)}</div>
+        {scale === "week" ? <div className="hc-gantt-days">{days.map((day) => <div key={day} data-today={day === today}><strong>{new Date(`${day}T12:00:00`).toLocaleDateString("en-US", { weekday: "short" })}</strong><span>{shortDate(day)}</span></div>)}</div> : <div className="hc-gantt-hours">{halfHours.map((time) => <div key={time}><span>{time.endsWith(":00") ? time : ""}</span></div>)}</div>}
         {rows.map((chore) => {
           const person = space.people.find((item) => item.id === chore.personId);
           const room = space.rooms.find((item) => item.id === chore.roomId);
           const dates = occurrences(chore);
-          return <div className="hc-gantt-row" key={chore.id}>
+          const [startHour, startMinute] = chore.startTime.split(":").map(Number);
+          const startColumn = Math.max(1, Math.min(33, Math.round((startHour - 6) * 2 + startMinute / 30) + 1));
+          const durationSlots = Math.max(1, Math.ceil(Number.parseInt(chore.time) / 30));
+          return <div className={`hc-gantt-row ${scale === "day" ? "hc-gantt-row-daily" : ""}`} key={chore.id}>
             <div className="hc-gantt-label"><strong>{chore.name}</strong><span>{person?.name ?? "Unassigned"} · {room?.name ?? "No room"}</span></div>
-            <div className="hc-gantt-track">{days.map((day) => <div className="hc-gantt-cell" data-today={day === today} key={day} />)}{dates.map((date) => <button type="button" className="hc-gantt-bar" style={{ gridColumn: days.indexOf(date) + 1 }} key={date} aria-label={`${chore.name} on ${shortDate(date)}`} aria-pressed={chore.done} onClick={() => setChore(chore.id, { done: !chore.done, doneOn: !chore.done ? date : undefined })}><span>{chore.time}</span></button>)}</div>
+            {scale === "week" ? <div className="hc-gantt-track">{days.map((day) => <div className="hc-gantt-cell" data-today={day === today} key={day} />)}{dates.map((date) => <button type="button" className="hc-gantt-bar" style={{ gridColumn: days.indexOf(date) + 1 }} key={date} aria-label={`${chore.name} on ${shortDate(date)}`} aria-pressed={completionDates(chore).includes(date)} onClick={() => toggleOccurrence(chore, date)}><span>{chore.startTime}</span></button>)}</div> : <div className="hc-gantt-track hc-gantt-track-hours">{halfHours.map((time) => <div className="hc-gantt-cell" key={time} />)}{dates.map((date) => <button type="button" className="hc-gantt-bar hc-gantt-hour-bar" style={{ gridColumn: `${startColumn} / span ${durationSlots}` }} key={date} aria-label={`${chore.name} at ${chore.startTime} on ${shortDate(date)}`} aria-pressed={completionDates(chore).includes(date)} onClick={() => toggleOccurrence(chore, date)}><span>{chore.startTime} · {chore.time}</span></button>)}</div>}
           </div>;
         })}
         {!rows.length && <div className="hc-gantt-empty">No chores to show in this view.</div>}
