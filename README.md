@@ -1,6 +1,6 @@
 # home.chores
 
-An interactive visual demo for managing household chores with family members or roommates.
+An interactive Next.js demo for managing household chores with family members or roommates.
 
 The demo includes:
 
@@ -14,13 +14,25 @@ The demo includes:
 - Notification preferences
 - Light beige/amber and dark themes
 
+## Technology
+
+- **Frontend:** Next.js App Router
+- **Language:** TypeScript
+- **UI:** React and Lucide icons
+- **Styling:** External CSS in `app/globals.css`
+
 ## Run locally
 
-Open `index.html` in a browser. No build step or package installation is required.
+```bash
+pnpm install
+pnpm dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000).
 
 The current prototype stores changes in memory, so refreshing the page resets the demo data.
 
-- `index.html` contains the application markup and interactions.
-- `styles.css` contains the responsive layout and theme styles.
+- `app/page.tsx` contains the typed React application.
+- `app/globals.css` contains the responsive layout and theme styles.
 
 See [BACKLOG.md](BACKLOG.md) for the implementation roadmap.
