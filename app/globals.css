@@ -19,3 +19,70 @@ html,body{margin:0;min-height:100%;background:#f5f0e8}body{padding:8px}button,in
 #hearth-demo .hc-week-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}#hearth-demo .hc-week-actions{display:flex;gap:7px;flex-wrap:wrap}#hearth-demo .hc-week-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}#hearth-demo .hc-day{background:var(--hc-panel);border:1px solid var(--hc-line);border-radius:14px;padding:14px;min-width:0;min-height:125px}#hearth-demo .hc-day-heading{border-bottom:1px solid var(--hc-line);padding-bottom:10px;margin-bottom:12px}#hearth-demo .hc-day-heading h2{font-size:14px}#hearth-demo .hc-day-empty{font-size:12px;padding:8px 0}#hearth-demo .hc-plan-task{background:var(--hc-bg);border-radius:9px;padding:12px;margin-top:10px;min-width:0}#hearth-demo .hc-plan-task h3{font-size:14px;font-weight:500;margin:0 0 5px;overflow-wrap:anywhere}#hearth-demo .hc-plan-task p{font-size:12px}#hearth-demo .hc-plan-person{display:flex;align-items:center;gap:7px;margin-top:13px;font-size:12px;flex-wrap:wrap}#hearth-demo .hc-plan-person .hc-check{margin-left:auto}#hearth-demo .hc-plan-person .hc-avatar{width:26px;height:26px}#hearth-demo .hc-plan-status{font-size:11px;color:var(--hc-accent);margin-top:8px}#hearth-demo .hc-plan-date{margin-top:10px}#hearth-demo .hc-plan-date input{padding:6px;font-size:12px;width:100%;min-width:0}@media(max-width:850px){#hearth-demo .hc-week-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){#hearth-demo .hc-week-grid{grid-template-columns:1fr}#hearth-demo nav{flex-wrap:wrap}#hearth-demo .hc-nav{flex-basis:40%}#hearth-demo .hc-plan-date input{font-size:16px}}
 #hearth-demo .hc-chore-tabs{display:flex;gap:5px;border-bottom:1px solid var(--hc-line);margin-bottom:22px;flex-wrap:wrap}#hearth-demo .hc-chore-tabs button{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--hc-muted);padding:10px 13px;min-height:44px;display:flex;align-items:center;gap:8px}#hearth-demo .hc-chore-tabs button[aria-pressed=true]{border-bottom-color:var(--hc-accent);color:var(--hc-accent)}#hearth-demo .hc-chore-tabs span{background:var(--hc-soft);padding:1px 7px;border-radius:6px;font-size:12px}
 #hearth-demo #hc-theme-toggle{display:flex;align-items:center;justify-content:center;width:54px;min-height:44px;border:0;padding:0;background:transparent;color:var(--hc-text);border-radius:12px}#hearth-demo .hc-theme-track{display:block;position:relative;width:48px;height:28px;background:var(--hc-line);border-radius:20px;transition:background-color 180ms ease}#hearth-demo .hc-theme-thumb{position:absolute;left:4px;top:4px;width:20px;height:20px;background:var(--hc-panel);border-radius:50%;transition:transform 180ms ease}#hearth-demo #hc-theme-toggle[aria-checked=true] .hc-theme-track{background:var(--hc-accent)}#hearth-demo #hc-theme-toggle[aria-checked=true] .hc-theme-thumb{transform:translateX(20px);background:var(--hc-on)}@media(prefers-reduced-motion:reduce){#hearth-demo .hc-theme-track,#hearth-demo .hc-theme-thumb{transition:none}}
+
+/* Full-viewport responsive layout */
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  padding: 0;
+}
+
+#hearth-demo {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  border-radius: 0;
+}
+
+#hearth-demo .hc-shell {
+  grid-template-columns: clamp(190px, 17vw, 260px) minmax(0, 1fr);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+#hearth-demo .hc-side {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+}
+
+#hearth-demo .hc-main {
+  width: 100%;
+  padding: clamp(20px, 2.5vw, 42px) clamp(18px, 3.5vw, 56px);
+}
+
+#hearth-demo .hc-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+}
+
+#hearth-demo .hc-week-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+}
+
+@media (max-width: 760px) {
+  #hearth-demo .hc-shell {
+    grid-template-columns: 160px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  #hearth-demo .hc-shell {
+    display: block;
+  }
+
+  #hearth-demo .hc-side {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  #hearth-demo .hc-main {
+    padding: 20px 16px 28px;
+  }
+}
