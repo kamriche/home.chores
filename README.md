@@ -2,6 +2,8 @@
 
 An interactive Next.js demo for managing household chores with family members or roommates.
 
+**Live preview:** [https://kamriche.github.io/home.chores/](https://kamriche.github.io/home.chores/)
+
 The demo includes:
 
 - Multiple houses, apartments, and shared spaces
