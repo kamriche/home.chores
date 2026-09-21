@@ -86,3 +86,5 @@ body {
     padding: 20px 16px 28px;
   }
 }
+
+#hearth-demo .hc-heading{justify-content:flex-end}
